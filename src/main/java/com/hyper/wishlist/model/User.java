@@ -1,6 +1,7 @@
 package com.hyper.wishlist.model;
 
 import lombok.Data;
+import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotBlank;
 
 import javax.persistence.Column;
@@ -13,18 +14,33 @@ import java.time.LocalDate;
 @Entity
 public class User {
 
-    private @Id @GeneratedValue Long id;
+    @Id @GeneratedValue
+    private Long id;
+
+    @NotBlank
+    private String firstName;
+
+    @NotBlank
+    private String lastName;
+
+    @NotBlank @Email @Column(unique = true)
+    private String email;
+
     @Column(unique=true)
     @NotBlank
     private String username;
+
     @NotBlank
     private String password;
+
     private LocalDate created;
 
-    public User() {
-    }
+    public User() {  }
 
-    public User(String username, String password, LocalDate created) {
+    public User(String firstName, String lastName, String email, String username, String password, LocalDate created){
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
         this.username = username;
         this.password = password;
         this.created = created;
