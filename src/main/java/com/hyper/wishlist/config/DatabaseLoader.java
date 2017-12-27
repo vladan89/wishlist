@@ -18,30 +18,27 @@ import java.util.List;
 public class DatabaseLoader implements CommandLineRunner {
 
     private final UserRepository userRepository;
-    private final ItemRepository itemRepository;
     private final WishlistRepository wishlistRepository;
 
     @Autowired
-    public DatabaseLoader(UserRepository userRepository, WishlistRepository wishlistRepository, ItemRepository itemRepository) {
+    public DatabaseLoader(UserRepository userRepository, WishlistRepository wishlistRepository) {
         this.userRepository = userRepository;
         this.wishlistRepository = wishlistRepository;
-        this.itemRepository = itemRepository;
     }
 
     @Override
     public void run(String... strings) throws Exception {
+        User user1 = new User("Darth", "Vader","darthvader@mail.com","darthvader","Asdf1234", LocalDate.now());
+        user1.setCreated(LocalDate.now());
+        this.userRepository.save(user1);
+        Wishlist myWishlist = new Wishlist("myWishlist");
+        myWishlist.setUser(user1);
+        List<Item> items = new ArrayList<>();
+        Item item1 = new Item("Item1","link1","500","eur","photo1.png","Note");
+        items.add(item1);
+        myWishlist.setItems(items);
+        myWishlist.setCreated(LocalDate.now());
+        this.wishlistRepository.save(myWishlist);
 
-        this.userRepository.save(new User("Darth", "Vader","darthvader@mail.com","darthvader","Asdf1234", LocalDate.now()));
-        List<Item> items = new ArrayList<Item>();
-        //items.add(new Item("http://somelink.com", "First Item","123.33","$","somephoto.png"));
-        //items.add(new Item("http://somelink.com", "First Item","123.33","$","somephoto.png","notes..."));
-        this.itemRepository.save(new Item("link3","item3","10","$","photo.png"));
-        items.add(this.itemRepository.save(new Item("link1","item1","10","$","photo.png")));
-        items.add(this.itemRepository.save(new Item("link2","item2","11","$","photo.png")));
-        //this.wishlistRepository.save(new Wishlist(1, A));
-        //this.wishlistRepository.save(new Wishlist(1));
-
-        this.wishlistRepository.save(new Wishlist(1));
-        this.wishlistRepository.save(new Wishlist(2));
     }
 }

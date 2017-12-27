@@ -8,6 +8,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 
 @Data
@@ -33,6 +34,7 @@ public class User {
     @NotBlank
     private String password;
 
+    @NotNull
     private LocalDate created;
 
     public User() {  }
@@ -43,6 +45,10 @@ public class User {
         this.email = email;
         this.username = username;
         this.password = password;
+        this.created = created;
+    }
+
+    public void setCreated(LocalDate created) {
         this.created = created;
     }
 }

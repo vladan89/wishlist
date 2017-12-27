@@ -3,9 +3,7 @@ package com.hyper.wishlist.model;
 import lombok.Data;
 import org.hibernate.validator.constraints.NotBlank;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Data
 @Entity
@@ -15,10 +13,10 @@ public class Item {
     private Long id;
 
     @NotBlank
-    private String link;
+    private String name;
 
     @NotBlank
-    private String name;
+    private String link;
 
     @NotBlank
     private String price;
@@ -31,9 +29,14 @@ public class Item {
 
     private String notes;
 
-    public Item(){ }
+    @ManyToOne
+    @JoinColumn(name="wishlist_id")
+    private Wishlist wishlist;
 
-    public Item(String link, String name, String price, String currency, String photo){
+    public Item() {
+    }
+
+    public Item(String name, String link, String price, String currency, String photo){
         this.link = link;
         this.name = name;
         this.price = price;
@@ -41,12 +44,8 @@ public class Item {
         this.photo = photo;
     }
 
-    public Item(String link, String name, String price, String currency, String photo, String notes){
-        this.link = link;
-        this.name = name;
-        this.price = price;
-        this.currency = currency;
-        this.photo = photo;
+    public Item(String name, String link, String price, String currency, String photo, String notes){
+        this(link, name, price, currency, photo);
         this.notes = notes;
     }
 
