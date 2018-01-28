@@ -31,11 +31,14 @@ public class DatabaseLoader implements CommandLineRunner {
         User user1 = new User("Darth", "Vader","darthvader@mail.com","darthvader","Asdf1234", LocalDate.now());
         user1.setCreated(LocalDate.now());
         this.userRepository.save(user1);
+
         Wishlist myWishlist = new Wishlist("myWishlist");
         myWishlist.setUser(user1);
+
         List<Item> items = new ArrayList<>();
-        Item item1 = new Item("Item1","link1","500","eur","photo1.png","Note");
+        Item item1 = new Item("Item1","link1","500","eur","photo1.png","Note", myWishlist);
         items.add(item1);
+
         myWishlist.setItems(items);
         myWishlist.setCreated(LocalDate.now());
         this.wishlistRepository.save(myWishlist);

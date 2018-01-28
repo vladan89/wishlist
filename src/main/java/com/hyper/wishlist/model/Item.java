@@ -9,7 +9,8 @@ import javax.persistence.*;
 @Entity
 public class Item {
 
-    @Id @GeneratedValue
+    @Id
+    @GeneratedValue
     private Long id;
 
     @NotBlank
@@ -30,24 +31,19 @@ public class Item {
     private String notes;
 
     @ManyToOne
-    @JoinColumn(name="wishlist_id")
+    @JoinColumn(name = "wishlist_id")
     private Wishlist wishlist;
 
     public Item() {
     }
 
-    public Item(String name, String link, String price, String currency, String photo){
+    public Item(String name, String link, String price, String currency, String photo, String note, Wishlist wishlist) {
         this.link = link;
         this.name = name;
         this.price = price;
         this.currency = currency;
         this.photo = photo;
+        this.wishlist = wishlist;
     }
-
-    public Item(String name, String link, String price, String currency, String photo, String notes){
-        this(link, name, price, currency, photo);
-        this.notes = notes;
-    }
-
 }
 
