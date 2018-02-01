@@ -17,9 +17,17 @@ public class WishlistController {
     private WishlistService wishlistService;
 
     @ResponseBody
+    @RequestMapping(value = "", method = RequestMethod.GET)
+    public ModelAndView showAllWishlists(){
+        ModelAndView modelAndView = new ModelAndView("wishlist/index");
+        modelAndView.addObject("wishlist", wishlistService.findAll());
+        return modelAndView;
+    }
+
+    @ResponseBody
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public ModelAndView showWishlist(@PathVariable Long id) {
-        ModelAndView modelAndView = new ModelAndView("wishlist");
+        ModelAndView modelAndView = new ModelAndView("wishlist/wishlist");
         modelAndView.addObject("wishlist", wishlistService.findById(id));
         return modelAndView;
     }

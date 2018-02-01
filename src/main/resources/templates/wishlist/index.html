@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>All wishlists</title>
+</head>
+<body>
+    <div th:each="wishlist : ${wishlist}">
+        <h1 th:text="${wishlist.name}"></h1>
+    </div>
+</body>
+</html>

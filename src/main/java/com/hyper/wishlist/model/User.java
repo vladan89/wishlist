@@ -39,16 +39,13 @@ public class User {
 
     public User() {  }
 
-    public User(String firstName, String lastName, String email, String username, String password, LocalDate created){
+    public User(String firstName, String lastName, String email, String username, String password){
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.username = username;
         this.password = password;
-        this.created = created;
+        this.created = LocalDate.now();
     }
 
-    public void setCreated(LocalDate created) {
-        this.created = created;
-    }
 }

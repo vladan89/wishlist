@@ -4,6 +4,8 @@ import lombok.Data;
 import org.hibernate.validator.constraints.NotBlank;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import java.time.LocalDate;
 
 @Data
 @Entity
@@ -28,22 +30,28 @@ public class Item {
     @NotBlank
     private String photo;
 
-    private String notes;
+    @NotBlank
+    private String note;
 
     @ManyToOne
     @JoinColumn(name = "wishlist_id")
     private Wishlist wishlist;
 
+    @NotNull
+    private LocalDate created;
+
     public Item() {
     }
 
     public Item(String name, String link, String price, String currency, String photo, String note, Wishlist wishlist) {
-        this.link = link;
         this.name = name;
+        this.link = link;
         this.price = price;
         this.currency = currency;
         this.photo = photo;
+        this.note = note;
         this.wishlist = wishlist;
+        this.created = LocalDate.now();
     }
 }
 

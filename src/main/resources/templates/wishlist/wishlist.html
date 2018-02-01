@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Wishist Details</title>
+</head>
+<body>
+
+<h1 th:text="${wishlist.name}"></h1>
+<div th:each="items : ${wishlist.items}">
+    <h3 th:text="${items.name}"></h3>
+</div>
+</body>
+</html>

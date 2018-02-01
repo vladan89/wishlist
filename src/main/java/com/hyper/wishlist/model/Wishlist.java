@@ -1,6 +1,7 @@
 package com.hyper.wishlist.model;
 
 import lombok.Data;
+import org.apache.tomcat.jni.Local;
 import org.hibernate.annotations.Cascade;
 import org.hibernate.validator.constraints.NotBlank;
 
@@ -33,6 +34,7 @@ public class Wishlist {
 
     public Wishlist(String name){
         this.name = name;
+        this.created = LocalDate.now();
     }
 
     public void setItems(List<Item> items) {
@@ -43,7 +45,4 @@ public class Wishlist {
         this.user = user;
     }
 
-    public void setCreated(LocalDate created) {
-        this.created = created;
-    }
 }
