@@ -1,7 +1,7 @@
 var path = require('path');
 
 module.exports = {
-    entry: './src/main/js/app.js',
+    entry: './src/main/js/scripts/app.js',
     devtool: 'sourcemaps',
     cache: true,
     debug: true,
@@ -19,6 +19,10 @@ module.exports = {
                     cacheDirectory: true,
                     presets: ['es2015', 'react']
                 }
+            },
+            {
+                test: /\.css$/,
+                loader: "style-loader!css-loader"
             }
         ]
     }
