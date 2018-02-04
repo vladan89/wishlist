@@ -1,10 +1,27 @@
-//'use strict';
-
 const React = require('react');
-const ReactDOM = require('react-dom');
 const client = require('../client');
+import {Route, Switch, BrowserRouter as Router} from "react-router-dom";
+import {browserHistory, hashHistory} from 'react-router';
 
 import {UsersList} from "../components/UserList";
+
+import Home from "../components/Home";
+import Other from "../components/Other";
+import NotFound from "../components/NotFound";
+import Menu from "../components/Menu";
+
+const renderMergedProps = (component, ...rest) => {
+    const finalProps = Object.assign({}, ...rest);
+    return React.createElement(component, finalProps);
+}
+
+const PropsRoute = ({ component, ...rest }) => {
+    return (
+        <Route {...rest} render={routeProps => {
+                return renderMergedProps(component, routeProps, rest);
+        }}/>
+    );
+}
 
 export class App extends React.Component {
 
@@ -22,10 +39,17 @@ export class App extends React.Component {
 
     render() {
         return (
-            <div>
-                <h1>Wishlist website</h1>
-                {/*<UsersList users={this.state.users}/>*/}
-            </div>
+                <Router history = {hashHistory}>
+                    <div>
+                        <Menu />
+                        <Switch>
+                            <PropsRoute exact path="/" component={Home}/>
+                            <PropsRoute path="/other" component={Other}/>
+                            <PropsRoute component={NotFound} />
+                        </Switch>
+                    </div>
+                </Router>
         )
     }
+
 }
