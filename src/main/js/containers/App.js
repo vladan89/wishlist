@@ -3,7 +3,11 @@ const client = require('../client');
 import {Route, Switch, BrowserRouter as Router} from "react-router-dom";
 import {browserHistory, hashHistory} from 'react-router';
 
+
 import {UsersList} from "../components/UserList";
+import {WishlistDetails} from "../components/WishlistDetails";
+import Wishlists from "../components/Wishlists";
+
 
 import Home from "../components/Home";
 import Other from "../components/Other";
@@ -27,7 +31,7 @@ export class App extends React.Component {
 
     constructor(props) {
         super(props);
-        this.state = {users: []};
+        this.state = {users: [], wishlists:[]};
     }
 
     componentDidMount() {
@@ -35,6 +39,9 @@ export class App extends React.Component {
             this.setState({users: response.entity._embedded.users});
         });
 
+        client({method: 'GET', path: '/api/wishlists'}).done(response => {
+            this.setState({wishlists: response.entity._embedded.wishlists});
+        });
     }
 
     render() {
@@ -44,7 +51,8 @@ export class App extends React.Component {
                         <Menu />
                         <Switch>
                             <PropsRoute exact path="/" component={Home}/>
-                            <PropsRoute path="/other" component={Other}/>
+                            <PropsRoute path="/wishlists/:id" component={WishlistDetails}/>
+                            <PropsRoute path="/wishlists"  wishlists={this.state.wishlists} component={Wishlists}/>
                             <PropsRoute component={NotFound} />
                         </Switch>
                     </div>

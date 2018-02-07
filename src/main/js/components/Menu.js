@@ -7,7 +7,7 @@ export default class Menu extends React.Component{
             <div className="menu">
                 <ul>
                     <li><NavLink exact activeClassName="activeLink" to="/">Home</NavLink></li>
-                    <li><NavLink activeClassName="activeLink" to="/other">Other</NavLink></li>
+                    <li><NavLink activeClassName="activeLink" to="/wishlists">Wishlists</NavLink></li>
                 </ul>
             </div>
         );
