@@ -1,6 +1,92 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,500,700');
 *{
     padding: 0px;
     margin: 0px;
-    background-color: #DDD;
-    color:#333333;
+    outline: none;
+    border: none;
+    font-family: "Roboto", sans-serif;
+}
+#react{
+    max-width: 600px;
+    margin: 0px auto;
+}
+a{
+    text-decoration: none;
+}
+li{
+    list-style-type: none;
+}
+.menu a{
+    display: block;
+    padding: 10px;
+    text-transform: uppercase;
+    background: #1e80e9;
+    color: white;
+    font-size: 13px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+}
+.menu li{
+    display: inline-block;
+    margin: 10px;
+}
+
+.wishlistLink{
+    padding: 10px;
+    display: block;
+    margin: 15px 0px;
+    color: #444;
+}
+.pageTitle{
+    font-weight: 700;
+    color: #777;
+    font-size: 32px;
+    padding: 0px 10px;
+    margin: 25px 0px;
+}
+
+.wishlistItemsHeader th{
+    text-transform: uppercase;
+    color: #777;
+    margin: 10px 20px;
+    padding: 10px 20px;
+    text-align: center;
+    font-weight: 700;
+    font-size: 17px;
+}
+.wishlistItem td{
+    text-align: center;
+    padding: 10px 0px;
+    font-size: 15px;
+    color: #444;
+}
+.wishlistItemName{
+    color: #1e80e9!important;
+    font-weight: 500;
+}
+.wishlistItemPrice{
+    font-size: 15px;
+    color: #444;
+}
+.wishlistItemNote{
+    text-align: justify!important;
+    padding: 0px 20px!important;
+}
+.wishlistItemPhoto img{
+    max-width: 150px;
+    padding: 20px;
+}
+.socialIcons{
+    font-size: 13px;
+    color: #777;
+    padding: 20px 10px;
+    padding-top: 0px;
+    font-weight:500;
+}
+.icon:first-child{
+    margin-left: 10px;
+}
+.icon{
+    margin-right: 10px;
 }

@@ -1,7 +1,7 @@
 const React = require('react');
 const client = require('../client');
 import {Route, Switch, BrowserRouter as Router} from "react-router-dom";
-import {browserHistory, hashHistory} from 'react-router';
+import {browserHistory} from 'react-router';
 
 
 import {UsersList} from "../components/UserList";
@@ -10,7 +10,7 @@ import Wishlists from "../components/Wishlists";
 
 
 import Home from "../components/Home";
-import Other from "../components/Other";
+import Header from "../components/Header";
 import NotFound from "../components/NotFound";
 import Menu from "../components/Menu";
 
@@ -46,8 +46,9 @@ export class App extends React.Component {
 
     render() {
         return (
-                <Router history = {hashHistory}>
+                <Router history = {browserHistory}>
                     <div>
+                        <Header />
                         <Menu />
                         <Switch>
                             <PropsRoute exact path="/" component={Home}/>

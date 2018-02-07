@@ -37,18 +37,18 @@ public class DatabaseLoader implements CommandLineRunner {
         this.userRepository.save(frodo);
         this.userRepository.save(batman);
 
-        Wishlist firstWishlist = new Wishlist("firstWishlist");
-        Wishlist secondWishlist = new Wishlist("secondWishlist");
-        Wishlist thirdWishlist = new Wishlist("thirdWishlist");
+        Wishlist firstWishlist = new Wishlist("John's Birthday");
+        Wishlist secondWishlist = new Wishlist("Joanna's Presentation");
+        Wishlist thirdWishlist = new Wishlist("John's and Joanna's Wedding");
 
-        Item item1 = new Item("Item1","link1","501","eur","photo1.png","Note 1", firstWishlist);
-        Item item2 = new Item("Item2","link2","502","eur","photo2.png","Note 2", firstWishlist);
+        Item item1 = new Item("Acer 22\" LED LCD monitor","link1","501","eur","photo1.png","Note 1", firstWishlist);
+        Item item2 = new Item("X Wave Headphones With Microphone HD 380PC BLUE","link2","502","eur","photo2.png","Note 2", firstWishlist);
 
-        Item item3 = new Item("Item3","link3","503","eur","photo3.png","Note 3", secondWishlist);
-        Item item4 = new Item("Item4","link4","504","eur","photo4.png","Note 4", secondWishlist);
+        Item item3 = new Item("Huawei P8 LITE WHITE - Dual SIM","link3","503","eur","photo3.png","Note 3", secondWishlist);
+        Item item4 = new Item("ACER laptop ES1 432 C2XP","link4","504","eur","photo4.png","Note 4", secondWishlist);
 
-        Item item5 = new Item("Item5","link5","505","eur","photo5.png","Note 5", thirdWishlist);
-        Item item6 = new Item("Item6","link6","506","eur","photo6.png","Note 6", thirdWishlist);
+        Item item5 = new Item("NOKIA Feature Basic NOKIA 216 DS BLACK","link5","505","eur","photo5.png","Note 5", thirdWishlist);
+        Item item6 = new Item("SAMSUNG Galaxy J3 BLACK","link6","506","eur","photo6.png","Note 6", thirdWishlist);
 
         List<Item> firstItemList = new ArrayList<>();
         List<Item> secondItemList = new ArrayList<>();

@@ -13,7 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 @RequestMapping(value = "/wishlists")
 public class WishlistController {
 
-    @Autowired
+    /*@Autowired
     private WishlistService wishlistService;
 
     @ResponseBody
@@ -30,6 +30,10 @@ public class WishlistController {
         ModelAndView modelAndView = new ModelAndView("wishlist/wishlist");
         modelAndView.addObject("wishlist", wishlistService.findById(id));
         return modelAndView;
-    }
+    }*/
 
+    @RequestMapping(value={"", "/", "/{id}"}, method = RequestMethod.GET)
+    public String index() {
+        return "index";
+    }
 }
