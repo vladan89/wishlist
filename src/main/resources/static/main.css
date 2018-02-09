@@ -34,8 +34,8 @@ li{
 
 .wishlistLink{
     padding: 10px;
-    display: block;
-    margin: 15px 0px;
+    display: inline-block;
+    margin: 5px 0px;
     color: #444;
 }
 .pageTitle{
@@ -89,4 +89,10 @@ li{
 }
 .icon{
     margin-right: 10px;
+}
+.deleteButton{
+    background: transparent;
+    color: #c53636;
+    font-weight: bold;
+    font-size: 12px;
 }

@@ -5,14 +5,14 @@ import {browserHistory} from 'react-router';
 
 
 import {UsersList} from "../components/UserList";
-import {WishlistDetails} from "../components/WishlistDetails";
 import Wishlists from "../components/Wishlists";
+import Wishlist from "../components/Wishlist";
 
 
-import Home from "../components/Home";
-import Header from "../components/Header";
-import NotFound from "../components/NotFound";
-import Menu from "../components/Menu";
+import {Home} from "../components/Home";
+import {Header} from "../components/Header";
+import {NotFound} from "../components/NotFound";
+import {Menu} from "../components/Menu";
 
 const renderMergedProps = (component, ...rest) => {
     const finalProps = Object.assign({}, ...rest);
@@ -31,17 +31,6 @@ export class App extends React.Component {
 
     constructor(props) {
         super(props);
-        this.state = {users: [], wishlists:[]};
-    }
-
-    componentDidMount() {
-        client({method: 'GET', path: '/api/users'}).done(response => {
-            this.setState({users: response.entity._embedded.users});
-        });
-
-        client({method: 'GET', path: '/api/wishlists'}).done(response => {
-            this.setState({wishlists: response.entity._embedded.wishlists});
-        });
     }
 
     render() {
@@ -52,8 +41,8 @@ export class App extends React.Component {
                         <Menu />
                         <Switch>
                             <PropsRoute exact path="/" component={Home}/>
-                            <PropsRoute path="/wishlists/:id" component={WishlistDetails}/>
-                            <PropsRoute path="/wishlists"  wishlists={this.state.wishlists} component={Wishlists}/>
+                            <PropsRoute path="/wishlists/:id" component={Wishlist}/>
+                            <PropsRoute path="/wishlists"  component={Wishlists}/>
                             <PropsRoute component={NotFound} />
                         </Switch>
                     </div>
