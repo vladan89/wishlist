@@ -23,11 +23,11 @@ public class SpringDataRestEventHandler {
     @HandleBeforeCreate
     public void applyUserInformationUsingSecurityContext(Wishlist wishlist) {
 
-        String name = SecurityContextHolder.getContext().getAuthentication().getName();
-        User user = this.userRepository.findByName(name);
+        String username = SecurityContextHolder.getContext().getAuthentication().getName();
+        User user = this.userRepository.findByUsername(username);
         if (user == null) {
             User newUser = new User();
-            newUser.setName(name);
+            newUser.setName(username);
             newUser.setRoles(new String[]{"ROLE_USER"});
             user = this.userRepository.save(newUser);
         }

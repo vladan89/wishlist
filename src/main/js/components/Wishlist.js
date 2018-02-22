@@ -24,6 +24,7 @@ export default class Wishlist extends React.Component{
 
     onItemRemove(item){
         client({method: 'DELETE', path: item._links.self.href}).done(response => {
+            console.log(response);
             var updatedItems = this.state.items.filter(current => current._links.self.href !== item._links.self.href );
             this.setState({items : updatedItems});
         });

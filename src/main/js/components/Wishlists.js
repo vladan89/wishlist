@@ -4,7 +4,7 @@ import {NavLink} from "react-router-dom";
 import {CreateWishlistDialog} from "./CreateWishlistDialog";
 
 export default class Wishlists extends React.Component{
-
+//TODO rename this class to WhishlistList
     constructor(props){
         super(props);
         this.state = {

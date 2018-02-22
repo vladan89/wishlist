@@ -53,5 +53,9 @@ public class Item {
         this.wishlist = wishlist;
         this.created = LocalDate.now();
     }
+
+    public Wishlist getWishlist() {
+        return wishlist;
+    }
 }
 
