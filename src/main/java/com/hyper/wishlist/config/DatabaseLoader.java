@@ -8,6 +8,9 @@ import com.hyper.wishlist.repository.UserRepository;
 import com.hyper.wishlist.repository.WishlistRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.authority.AuthorityUtils;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
@@ -29,17 +32,29 @@ public class DatabaseLoader implements CommandLineRunner {
     @Override
     public void run(String... strings) throws Exception {
 
-        User darth = new User("Darth", "Vader","darthvader@mail.com","darthvader","Asdf1234");
-        User frodo = new User("Frodo", "Baggins","frodobaggins@mail.com","frodobaggins","Asdf1234");
-        User batman = new User("Bat", "Man","batman@mail.com","batman","Asdf1234");
+        User darth = new User("darth", "darth", "darth", "email1@email.com", "asdf1234", "ROLE_USER");
+        User frodo = new User("frodo", "frodo", "frodo", "email2@email.com", "asdf1234", "ROLE_USER");
+        User batman = new User("batman", "batman", "batman", "email3@email.com", "asdf1234", "ROLE_USER");
 
         this.userRepository.save(darth);
         this.userRepository.save(frodo);
         this.userRepository.save(batman);
 
-        Wishlist firstWishlist = new Wishlist("John's Birthday");
-        Wishlist secondWishlist = new Wishlist("Joanna's Presentation");
-        Wishlist thirdWishlist = new Wishlist("John's and Joanna's Wedding");
+        SecurityContextHolder.getContext().setAuthentication(
+                new UsernamePasswordAuthenticationToken("darth", "some credentials", AuthorityUtils.createAuthorityList("ROLE_USER"))
+        );
+
+        SecurityContextHolder.getContext().setAuthentication(
+                new UsernamePasswordAuthenticationToken("frodo","some credentials", AuthorityUtils.createAuthorityList("ROLE_USER"))
+        );
+
+        SecurityContextHolder.getContext().setAuthentication(
+                new UsernamePasswordAuthenticationToken("batman", "some credentials", AuthorityUtils.createAuthorityList("ROLE_USER"))
+        );
+
+        Wishlist firstWishlist = new Wishlist("John's Birthday", darth);
+        Wishlist secondWishlist = new Wishlist("Joanna's Presentation", frodo);
+        Wishlist thirdWishlist = new Wishlist("John's and Joanna's Wedding", batman);
 
         Item item1 = new Item("Acer 22\" LED LCD monitor","link1","501","eur","photo1.png","Note 1", firstWishlist);
         Item item2 = new Item("X Wave Headphones With Microphone HD 380PC BLUE","link2","502","eur","photo2.png","Note 2", firstWishlist);
@@ -61,15 +76,13 @@ public class DatabaseLoader implements CommandLineRunner {
         thirdItemList.add(item5);
         thirdItemList.add(item6);
 
-        firstWishlist.setUser(darth);
+        /*firstWishlist.setUser(darth);
         secondWishlist.setUser(frodo);
-        thirdWishlist.setUser(batman);
+        thirdWishlist.setUser(batman);*/
 
 
         firstWishlist.setItems(firstItemList);
-
         secondWishlist.setItems(secondItemList);
-
         thirdWishlist.setItems(thirdItemList);
 
         this.wishlistRepository.save(firstWishlist);
@@ -77,6 +90,6 @@ public class DatabaseLoader implements CommandLineRunner {
         this.wishlistRepository.save(thirdWishlist);
 
 
-
+        SecurityContextHolder.clearContext();
     }
 }

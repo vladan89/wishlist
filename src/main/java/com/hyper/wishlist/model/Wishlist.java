@@ -27,7 +27,6 @@ public class Wishlist {
     @OneToMany(mappedBy = "wishlist", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Item> items;
 
-    @NotNull
     private LocalDate created;
 
     public Wishlist(){}
@@ -35,11 +34,17 @@ public class Wishlist {
     public Wishlist(String name){
         this.name = name;
         this.created = LocalDate.now();
+   }
+    public Wishlist(String name, User user){
+        this(name);
+        this.created = LocalDate.now();
+        this.user = user;
     }
 
     public void setItems(List<Item> items) {
         this.items = items;
     }
+
 
     public void setUser(User user) {
         this.user = user;

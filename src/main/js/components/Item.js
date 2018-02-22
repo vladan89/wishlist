@@ -22,7 +22,7 @@ export class Item extends React.Component{
                 <td className="wishlistItemPrice">{item.price} {item.currency.toUpperCase()}</td>
                 <td className="wishlistItemNote">{item.note}</td>
 
-                <td className="wishlistItemButton"><button type="button" className="deleteButton" onClick={this.handleRemove}>Remove</button></td>
+                <td className="wishlistItemButton"><button type="button" className="button redButton" onClick={this.handleRemove}>Remove</button></td>
             </tr>
         );
     }

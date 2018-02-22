@@ -1,14 +1,17 @@
 import React from "react";
 const client = require('../client');
 import {NavLink} from "react-router-dom";
+import {CreateWishlistDialog} from "./CreateWishlistDialog";
 
 export default class Wishlists extends React.Component{
 
     constructor(props){
         super(props);
         this.state = {
-            wishlists: []
+            wishlists: [],
+            attributes: ["name"]
         };
+        this.onWishlistCreate = this.onWishlistCreate.bind(this);
     }
 
     componentDidMount() {
@@ -24,15 +27,29 @@ export default class Wishlists extends React.Component{
         });
     }
 
+    onWishlistCreate(newWishlist) {
+        return client({
+            method: 'POST',
+            path: "/api/wishlists",
+            entity: newWishlist,
+            headers: {'Content-Type': 'application/json'}
+        }).done(response=>{
+            console.log("Created");
+        })
+
+
+    }
+
     render() {
         var wishlists = this.state.wishlists.map(wishlist => (
             <div  key={wishlist._links.self.href} >
+                <button type="button" className="button redButton" onClick={()=>this.onWishlistRemove(wishlist)}>Remove</button>
                 <NavLink className={"wishlistLink"} to={"/wishlists/"+ wishlist._links.self.href.split("/").pop()}>{wishlist.name}</NavLink>
-                <button type="button" className="deleteButton" onClick={()=>this.onWishlistRemove(wishlist)}>Remove</button>
             </div>)
         );
         return (
             <div>
+                <CreateWishlistDialog attributes={this.state.attributes} onWishlistCreate={this.onWishlistCreate}/>
                 {wishlists}
             </div>
         )
