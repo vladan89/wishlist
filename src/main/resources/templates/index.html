@@ -7,7 +7,7 @@
 </head>
 <body>
 <!-- tag::logout[] -->
-<div>
+<div class="logoutBox">
     Hello, <span th:text="${#authentication.name}">user</span>.
     <form th:action="@{/logout}" method="post">
         <input type="submit" value="Log Out"/>

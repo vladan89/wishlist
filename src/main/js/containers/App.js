@@ -37,7 +37,6 @@ export class App extends React.Component {
         return (
                 <Router history = {browserHistory}>
                     <div>
-                        <Header />
                         <Menu />
                         <Switch>
                             <PropsRoute exact path="/" component={Home}/>

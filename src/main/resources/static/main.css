@@ -184,3 +184,19 @@ li{
     color: #54b757;
     font-weight: 500;
 }
+
+.pageTitle {
+    position: absolute;
+    top: 0;
+}
+.socialIcons {
+    position: relative;
+    float: right;
+}
+.menu {
+    clear: both;
+}
+.logoutBox {
+    display: inline-block;
+    float: right;
+}
