@@ -3,8 +3,8 @@ const client = require('../client');
 import {NavLink} from "react-router-dom";
 import {CreateWishlistDialog} from "./CreateWishlistDialog";
 
-export default class Wishlists extends React.Component{
-//TODO rename this class to WhishlistList
+export default class WhishlistList extends React.Component{
+
     constructor(props){
         super(props);
         this.state = {
@@ -33,8 +33,10 @@ export default class Wishlists extends React.Component{
             path: "/api/wishlists",
             entity: newWishlist,
             headers: {'Content-Type': 'application/json'}
-        }).done(response=>{
-            console.log("Created");
+        }).done( response => {
+            this.setState({
+               wishlists: [...this.state.wishlists, {user: response.entity.user, name: newWishlist.name, _links: response.entity._links}]
+            });
         })
 
 

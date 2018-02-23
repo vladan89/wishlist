@@ -24,7 +24,7 @@ public class Wishlist {
     @NotBlank
     private String name;
 
-    @OneToMany(mappedBy = "wishlist", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "wishlist", cascade = CascadeType.PERSIST, orphanRemoval = true, fetch = FetchType.EAGER)
     private List<Item> items;
 
     private LocalDate created;

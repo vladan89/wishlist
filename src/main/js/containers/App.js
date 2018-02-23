@@ -5,7 +5,7 @@ import {browserHistory} from 'react-router';
 
 
 import {UsersList} from "../components/UserList";
-import Wishlists from "../components/Wishlists";
+import WhishlistList from "../components/WhishlistList";
 import Wishlist from "../components/Wishlist";
 
 
@@ -42,7 +42,7 @@ export class App extends React.Component {
                         <Switch>
                             <PropsRoute exact path="/" component={Home}/>
                             <PropsRoute path="/wishlists/:id" component={Wishlist}/>
-                            <PropsRoute path="/wishlists"  component={Wishlists}/>
+                            <PropsRoute path="/wishlists"  component={WhishlistList}/>
                             <PropsRoute component={NotFound} />
                         </Switch>
                     </div>

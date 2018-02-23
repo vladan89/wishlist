@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+
 @Controller
-@RequestMapping("/api/items")
 public class ItemsController {
 
     @Autowired
@@ -21,13 +21,15 @@ public class ItemsController {
     private WishlistRepository wishlistRepository;
 
     @ResponseBody
-    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+    @RequestMapping(value = "/api/items/{id}", method = RequestMethod.DELETE)
     public String deleteItem(@PathVariable Long id) {
         Item item = itemRepository.findOne(id);
         Wishlist wishlist = item.getWishlist();
         List<Item> newList = wishlist.getItems();
         newList.remove(item);
         wishlistRepository.save(wishlist);
-        return "OK";
+        return "";
     }
+
 }
+
