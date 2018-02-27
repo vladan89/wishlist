@@ -5,14 +5,15 @@ import {browserHistory} from 'react-router';
 
 
 import {UsersList} from "../components/UserList";
-import WhishlistList from "../components/WhishlistList";
-import Wishlist from "../components/Wishlist";
+import WishlistList from "../components/WishlistList";
+import WishlistDetails from "../components/WishlistDetails";
 
 
 import {Home} from "../components/Home";
 import {Header} from "../components/Header";
 import {NotFound} from "../components/NotFound";
 import {Menu} from "../components/Menu";
+import {Login} from "../components/Login";
 
 const renderMergedProps = (component, ...rest) => {
     const finalProps = Object.assign({}, ...rest);
@@ -37,11 +38,12 @@ export class App extends React.Component {
         return (
                 <Router history = {browserHistory}>
                     <div>
-                        <Menu />
+                        {/*<Menu />*/}
+                        <Header />
                         <Switch>
-                            <PropsRoute exact path="/" component={Home}/>
-                            <PropsRoute path="/wishlists/:id" component={Wishlist}/>
-                            <PropsRoute path="/wishlists"  component={WhishlistList}/>
+                            <PropsRoute exact path="/" component={WishlistList}/>
+                            <PropsRoute path="/wishlists/:id" component={WishlistDetails}/>
+                            <PropsRoute path="/wishlists"  component={WishlistList}/>
                             <PropsRoute component={NotFound} />
                         </Switch>
                     </div>

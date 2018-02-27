@@ -1,9 +1,11 @@
 import React from "react";
 const client = require('../client');
 import {NavLink} from "react-router-dom";
-import {CreateWishlistDialog} from "./CreateWishlistDialog";
+import {CreateDialog} from "./CreateDialog";
 
-export default class WhishlistList extends React.Component{
+import MDDelete from "react-icons/lib/fa/close";
+
+export default class WishlistList extends React.Component{
 
     constructor(props){
         super(props);
@@ -37,22 +39,22 @@ export default class WhishlistList extends React.Component{
             this.setState({
                wishlists: [...this.state.wishlists, {user: response.entity.user, name: newWishlist.name, _links: response.entity._links}]
             });
-        })
-
-
+        });
     }
 
     render() {
         var wishlists = this.state.wishlists.map(wishlist => (
             <div  key={wishlist._links.self.href} >
-                <button type="button" className="button redButton" onClick={()=>this.onWishlistRemove(wishlist)}>Remove</button>
-                <NavLink className={"wishlistLink"} to={"/wishlists/"+ wishlist._links.self.href.split("/").pop()}>{wishlist.name}</NavLink>
+                <button type="button" className="button redButton" onClick={()=>this.onWishlistRemove(wishlist)}>
+                    <MDDelete size={15} fill={"#ffffff"}/>
+                </button>
+                <NavLink className={"wishlistLink middleHeightLink"} to={"/wishlists/"+ wishlist._links.self.href.split("/").pop()}>{wishlist.name}</NavLink>
             </div>)
         );
         return (
             <div>
-                <CreateWishlistDialog attributes={this.state.attributes} onWishlistCreate={this.onWishlistCreate}/>
-                {wishlists}
+                <CreateDialog attributes={this.state.attributes} purpose={"wishlist"} onWishlistCreate={this.onWishlistCreate}/>
+                {wishlists.length === 0 ? "No wishlists" : wishlists}
             </div>
         )
     }

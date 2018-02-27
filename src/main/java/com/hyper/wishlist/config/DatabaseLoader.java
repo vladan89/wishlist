@@ -61,8 +61,10 @@ public class DatabaseLoader implements CommandLineRunner {
         List<Item> thirdItemList = new ArrayList<>();
         Item item5 = new Item("NOKIA Feature Basic NOKIA 216 DS BLACK","link5","505","eur","photo5.png","Note 5", thirdWishlist);
         Item item6 = new Item("SAMSUNG Galaxy J3 BLACK","link6","506","eur","photo6.png","Note 6", thirdWishlist);
+        Item item7 = new Item("SAMSUNG Galaxy J3 BLACK","link6","507","eur","photo6.png","Note 6", thirdWishlist);
         thirdItemList.add(item5);
         thirdItemList.add(item6);
+        thirdItemList.add(item7);
         thirdWishlist.setItems(thirdItemList);
         this.wishlistRepository.save(thirdWishlist);
         

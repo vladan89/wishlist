@@ -1,5 +1,8 @@
 import React from "react";
 
+import MDDelete from "react-icons/lib/fa/close";
+import MDCheck from "react-icons/lib/fa/check";
+
 export class Item extends React.Component{
 
     constructor(props){
@@ -14,16 +17,23 @@ export class Item extends React.Component{
     render(){
         var item = this.props.item;
         return (
-            <tr className="wishlistItem">
-                <td className="wishlistItemPhoto">
+            <div className={"wishlistItem"}>
+                <div className="wishlistItemPhoto">
                     <img src="https://static.tehnomanija.rs/UserFiles/protected_products/77559.jpg" alt="Item photo"/>
-                </td>
-                <td className="wishlistItemName">{item.name}</td>
-                <td className="wishlistItemPrice">{item.price} {item.currency.toUpperCase()}</td>
-                <td className="wishlistItemNote">{item.note}</td>
+                </div>
+                <div className={"wishlistItemData"}>
+                <p className={"wishlistItemSmallRow"}>Item</p>
+                <p className={"wishlistItemName"}>{item.name}</p>
+                <p className={"wishlistItemSmallRow"}>Price</p>
+                <p className={"wishlistItemPrice"}>{item.price} {item.currency.toUpperCase()}</p>
+                <p className={"wishlistItemSmallRow"}>Note</p>
+                <p className={"wishlistItemNote"}>{item.note}</p>
 
-                <td className="wishlistItemButton"><button type="button" className="button redButton" onClick={this.handleRemove}>Remove</button></td>
-            </tr>
+                <p className={"wishlistItemSmallRow"}>Actions</p>
+                <button type="button" className="button greenButton " onClick={this.handleRemove}><MDCheck size={15} fill={"#ffffff"}/></button>
+                <button type="button" className="button redButton " onClick={this.handleRemove}><MDDelete size={15} fill={"#ffffff"}/></button>
+                </div>
+            </div>
         );
     }
 }

@@ -37,7 +37,6 @@ public class Item {
     @JoinColumn(name = "wishlist_id")
     private Wishlist wishlist;
 
-    @NotNull
     private LocalDate created;
 
     public Item() {
