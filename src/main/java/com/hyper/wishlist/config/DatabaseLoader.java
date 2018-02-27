@@ -32,11 +32,11 @@ public class DatabaseLoader implements CommandLineRunner {
     @Override
     public void run(String... strings) throws Exception {
 
-        User darth = new User("darth", "darth", "darth", "email1@email.com", "asdf1234", "ROLE_USER");
+        User darth = new User("darth", "darth", "darth", "email1@email.com", "asdf1234");
         this.userRepository.save(darth);
-        User frodo = new User("frodo", "frodo", "frodo", "email2@email.com", "asdf1234", "ROLE_USER");
+        User frodo = new User("frodo", "frodo", "frodo", "email2@email.com", "asdf1234");
         this.userRepository.save(frodo);
-        User batman = new User("batman", "batman", "batman", "email3@email.com", "asdf1234", "ROLE_USER");
+        User batman = new User("batman", "batman", "batman", "email3@email.com", "asdf1234");
         this.userRepository.save(batman);
 
         Wishlist firstWishlist = new Wishlist("John's Birthday", darth);

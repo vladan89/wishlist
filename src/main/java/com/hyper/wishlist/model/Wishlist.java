@@ -24,7 +24,7 @@ public class Wishlist {
     @NotBlank
     private String name;
 
-    @OneToMany(mappedBy = "wishlist", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "wishlist", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Item> items;
 
     private LocalDate created;
@@ -34,23 +34,11 @@ public class Wishlist {
     public Wishlist(String name){
         this.name = name;
         this.created = LocalDate.now();
-   }
+    }
+
     public Wishlist(String name, User user){
         this(name);
         this.created = LocalDate.now();
         this.user = user;
     }
-
-    public List<Item> getItems() {
-        return items;
-    }
-
-    public void setItems(List<Item> items) {
-        this.items = items;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
-
 }

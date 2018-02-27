@@ -42,11 +42,9 @@ public class User {
 
     private LocalDate created;
 
-    private String[] roles;
-
     public User() {  }
 
-    public User(String name, String lastName, String username, String email, String password, String... roles){
+    public User(String name, String lastName, String username, String email, String password){
         this.name = name;
         this.lastName = lastName;
         this.username = username;
@@ -58,27 +56,5 @@ public class User {
     public void setPassword(String password){
         this.password = PASSWORD_ENCODER.encode(password);
     }
-    public String getName() {
-        return this.name;
-    }
 
-    public String getPassword() {
-        return this.password;
-    }
-
-    public String[] getRoles() {
-        return this.roles;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setRoles(String[] roles) {
-        this.roles = roles;
-    }
-
-    public String getUsername() {
-        return this.username;
-    }
 }

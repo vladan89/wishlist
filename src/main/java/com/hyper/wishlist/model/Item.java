@@ -1,6 +1,7 @@
 package com.hyper.wishlist.model;
 
 import lombok.Data;
+import org.hibernate.annotations.Cascade;
 import org.hibernate.validator.constraints.NotBlank;
 
 import javax.persistence.*;
@@ -51,10 +52,6 @@ public class Item {
         this.note = note;
         this.wishlist = wishlist;
         this.created = LocalDate.now();
-    }
-
-    public Wishlist getWishlist() {
-        return wishlist;
     }
 }
 
