@@ -9,7 +9,7 @@ export default class WishlistDetails extends React.Component{
         super(props);
         this.state = {
             items : [],
-            attributes: ["link"]
+            attributes: ["name", "link","price","currency","photo","note"]
         }
 
         this.onItemRemove = this.onItemRemove.bind(this);
@@ -31,28 +31,20 @@ export default class WishlistDetails extends React.Component{
     }
 
     onItemCreate(newItem) {
-        var wishlistId = +this.props.match.params.id;
+        var {name, link, price, currency, photo, note} = newItem;
+        var wishlist = window.location.href.split("#")[0];
         return client({
             method: 'POST',
-            path: "/api/wishlists/"+wishlistId+"/items",
-            entity: newItem,
+            path: "/api/items",
+            entity: {name, link, price, currency, photo, note, wishlist},
             headers: {'Content-Type': 'application/json'}
         }).done( response => {
-            console.log("Created");
-            console.log(response.entity);
-            console.log(response.entity._links);
-
             this.setState({
                 items: [...this.state.items,
                         {
                             user: response.entity.user,
-                            _links: response.entity._links,
-                            link:newItem.link,
-                            name: "New Item!",
-                            price:550,
-                            photo: "https://static.tehnomanija.rs/UserFiles/protected_products/77559.jpg",
-                            currency: "EUR",
-                            note:"Some very short note"
+                            name, link, price, currency, photo, note, wishlist,
+                            _links: response.entity._links
                         }
                     ]
             });

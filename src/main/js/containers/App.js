@@ -38,8 +38,8 @@ export class App extends React.Component {
         return (
                 <Router history = {browserHistory}>
                     <div>
-                        {/*<Menu />*/}
                         <Header />
+                        <Menu />
                         <Switch>
                             <PropsRoute exact path="/" component={WishlistList}/>
                             <PropsRoute path="/wishlists/:id" component={WishlistDetails}/>

@@ -42,7 +42,7 @@ export class CreateDialog extends React.Component {
         );
         return (
             <div>
-                <a href="#createDialog">
+                <a href="#createDialog" className={"createDialogLink"}>
                     <button className="button greenButton">
                         <MDCreate size={15} fill={"#ffffff"}/>
                     </button>

@@ -32,7 +32,7 @@ li{
 }
 .menu li{
     display: inline-block;
-    margin: 10px;
+    margin-bottom: 20px;
 }
 
 .wishlistLink{
@@ -225,4 +225,8 @@ li{
     font-size: 13px;
     position: relative;
     top: 2px;
+}
+.createDialogLink{
+    display: block;
+    margin-bottom: 20px;
 }
