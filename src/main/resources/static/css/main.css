@@ -1,13 +1,18 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto:400,500,700');
+@import url('https://fonts.googleapis.com/css?family=Raleway');
+
 *{
     padding: 0px;
     margin: 0px;
     outline: none;
     border: none;
-    font-family: "Roboto", sans-serif;
+    font-family: "Raleway", sans-serif;
+}
+body{
+    background-color: #f3f3f3;
 }
 #react{
-    max-width: 600px;
+    max-width: 1200px;
     margin: 0px auto;
 }
 a{
@@ -16,25 +21,58 @@ a{
 li{
     list-style-type: none;
 }
-.menu a{
-    display: block;
-    padding: 10px 0px;
-    text-transform: uppercase;
-    color: #1e80e9;
-    font-size: 13px;
-    -webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
-    border-radius: 5px;
-    font-weight:500;
-}
-.menu a:hover{
-    color: #777;
-}
-.menu li{
-    display: inline-block;
-    margin-bottom: 20px;
-}
 
+#menu{
+    float: right;
+    max-width: 500px;
+    display: inline-block;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 2;
+}
+#menu-icon{
+    float: left;
+    width: 16px;
+    background: gray;
+    padding: 10px 10px;
+    cursor: pointer;
+    margin: 20px;
+}
+.menu-list{
+    display: inline-block;
+    float: right;
+    background-color:#47494a;
+    height: 100%;
+}
+.menu-list > ul li a{
+    color: #b5b0b0;
+    display: block;
+    text-transform: uppercase;
+    padding: 20px 100px 20px 10px;
+    transition: 0.5s all;
+    font-size: 14px;
+    letter-spacing: 1px;
+}
+.menu-list > ul li a:hover{
+    color:white;
+}
+.menu-list > span {
+    color: #e5efef;
+    font-weight: normal;
+    text-transform: uppercase;
+    font-size: 18px;
+    display: inline-block;
+    background: #5bb5d3;
+    display: block;
+    padding-left: 10px;
+    padding: 30px 0px 30px 10px;
+    letter-spacing: 1px;
+}
+.activeLink{
+    color: #5bb5d3!important;
+}
 .wishlistLink{
     display: inline-block;
     margin: 5px 0px;
@@ -44,26 +82,6 @@ li{
     position: relative;
     bottom: 10px;
     margin: 0px 10px;
-}
-.headerTop{
-    background: #3181d4;
-    padding: 15px 0px;
-    text-align: center;
-}
-.appName{
-    font-weight: 700;
-    font-size: 36px;
-    color: white;
-    position: relative;
-    top: 2px;
-}
-.socialIcons{
-    font-size: 13px;
-    color: #777;
-    padding: 20px 0px;
-    padding-top: 0px;
-    font-weight:500;
-    margin-top: 20px;
 }
 .wishlistItem{
     max-width: 250px;
@@ -107,16 +125,18 @@ li{
 .redButton{
     background: #ca3737;
 }
-.blueButton{
-    background: #1ea2f2;
-}
 .greenButton{
     background-color: #54b757;
+}
+.blueButton{
+    background-color: #5bb5d3;
+}
+.blue{
+    color: #5bb5d3;
 }
 .modalButton{
     margin: 0px;
     margin-bottom: 5px;
-    color: #54b757;
     text-transform: uppercase;
     padding: 10px 0px;
     background: none;
@@ -205,7 +225,6 @@ li{
     text-transform: uppercase;
     font-size: 20px;
     margin: 10px 0px 20px 0px;
-    color: #54b757;
     font-weight: 500;
 }
 
@@ -229,4 +248,124 @@ li{
 .createDialogLink{
     display: block;
     margin-bottom: 20px;
+}
+
+/*HEADER*/
+
+.clear{
+    clear: both;
+}
+.headerLeft{
+    display: inline-block;
+    float: left;
+}
+.headerRight{
+    display: inline-block;
+    float: right;
+}
+.logo img{
+    max-width: 60%;
+    width:100%;
+}
+/**CSS FLEX**/
+
+.auto-flex-holder{
+    align-self:auto;
+}
+.flex-container{
+    display: -webkit-flex;
+    display: flex;
+    -webkit-justify-content: space-around;
+    justify-content: space-around;
+}
+.flex-item{
+    margin: 50px 20px 25px 25px;
+    list-style: none;
+    min-width:29%;
+}
+.center{
+    text-align: center!important;
+}
+.caps{
+    text-transform: uppercase;
+}
+.item-about{
+    color: #47494a;
+}
+.main-title{
+    font-size: 30px;
+    font-weight: normal;
+    color:#47494a;
+}
+/**Footer*/
+
+footer{
+    background: #DDD;
+}
+footer img, #social img{
+    padding: 10px;
+    transition: all 0.5s ease;
+    outline:none;
+}
+footer img:hover, #social img:hover {
+    background: #47494a;
+}
+footer p{
+    margin:10px 0px;
+    text-align: center;
+}
+.footerBottom{
+    position: absolute;
+    left: 0;
+    width: 100%;
+}
+
+.form{
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 5px;
+}
+.form input, .form textarea {
+    display: block;
+    margin: 10px 0;
+    padding: 10px 5px;
+    max-width: 96%;
+    width: 96%;
+    background: #e1e1e1;
+    outline: none;
+    border: none;
+    color: gray;
+    border-radius: 2px;
+}
+.form input[type="submit"] {
+    border: none;
+    width: 100px;
+    margin: 0px auto;
+    color:white;
+    padding: 10px;
+    background-color: #5bb5d3!important;
+    margin-top: 20px;
+}
+.formCaption{
+    text-align: center;
+    color: #5bb5d3;
+    text-transform: uppercase;
+    margin: 25px 0px;
+    font-size: 25px;
+}
+.min100vh{
+    min-height: 100vh;
+}
+.btnAsMenuLink{
+    color: #b5b0b0;
+    display: block;
+    text-transform: uppercase;
+    padding: 20px 100px 20px 10px;
+    transition: 0.5s all;
+    font-size: 14px;
+    letter-spacing: 1px;
+    background: none;
+    cursor: pointer;
+    border: none;
+    outline: none;
 }

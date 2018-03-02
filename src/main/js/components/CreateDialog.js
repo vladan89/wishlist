@@ -43,21 +43,21 @@ export class CreateDialog extends React.Component {
         return (
             <div>
                 <a href="#createDialog" className={"createDialogLink"}>
-                    <button className="button greenButton">
+                    <button className="button blueButton">
                         <MDCreate size={15} fill={"#ffffff"}/>
                     </button>
-                    <span className={"middleHeightLink green"}>Create {this.props.purpose}</span>
+                    <span className={"middleHeightLink blue"}>Create {this.props.purpose}</span>
                 </a>
 
                 <div id="createDialog" className="modalDialog">
                     <div>
                         <a href="#" title="Close" className="close">X</a>
 
-                        <p className="dialogTitle">Create new {this.props.purpose}</p>
+                        <p className="dialogTitle blue">Create new {this.props.purpose}</p>
 
                         <form>
                             {inputs}
-                            <button onClick={this.handleSubmit} className="greenButton modalButton">Create</button>
+                            <button onClick={this.handleSubmit} className="blueButton modalButton blue">Create</button>
                         </form>
                     </div>
                 </div>

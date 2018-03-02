@@ -1,0 +1,18 @@
+@media screen and (max-width: 480px) {
+    .flex-container{
+        -webkit-flex-direction: column;
+        flex-direction: column;
+        text-align: center;
+    }
+    .menu-list{
+        max-width: 160px!important;
+    }
+    footer span.flex-item{
+        -webkit-flex-direction: column;
+        flex-direction: column;
+    }
+    footer p{
+        margin:10px 0px;
+        text-align: center!important;
+    }
+}

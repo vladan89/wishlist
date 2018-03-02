@@ -22,7 +22,6 @@ public class SpringDataRestEventHandler {
 
     @HandleBeforeCreate
     public void applyUserInformationUsingSecurityContext(Wishlist wishlist) {
-
         String username = SecurityContextHolder.getContext().getAuthentication().getName();
         User user = this.userRepository.findByUsername(username);
         if (user == null) {

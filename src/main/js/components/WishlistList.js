@@ -17,8 +17,11 @@ export default class WishlistList extends React.Component{
     }
 
     componentDidMount() {
-        client({method: 'GET', path: '/api/wishlists'}).done(response => {
-            this.setState({wishlists: response.entity._embedded.wishlists});
+        client({method: 'GET', path: '/security/logged'}).done(response => {
+            this.setState({loggedUserId: response.entity});
+            client({method: "GET", path:"/api/users/"+response.entity+"/wishlists"}).done(response => {
+                this.setState({wishlists: response.entity._embedded.wishlists});
+            });
         });
     }
 
