@@ -39,7 +39,7 @@ export class App extends React.Component {
                 <Router history = {browserHistory}>
                     <div>
                         <Header />
-                        <div className="min100vh">
+                        <div className={location.pathname.substring(0,6) === "/login" ? "content horizontalyCentered": "content"}>
                             <Switch>
                                 <PropsRoute exact path="/" component={WishlistList}/>
                                 <PropsRoute path="/wishlists/:id" component={WishlistDetails}/>
