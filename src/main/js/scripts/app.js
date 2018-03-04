@@ -55,50 +55,74 @@ function ProductParser(url) {
 
 ProductParser.prototype.parse = function () {
     //TODO find supported parser
-    this.page = this.getPage(this.link);
-    if(this.page != null) {
-        this.name = this.parseName();
-        this.price = this.parsePrice();
-        this.currency = this.parseCurrency();
-        this.proto = this.parsePhoto();
-    }
+    this.getPage(this.link);
 };
 
-ProductParser.prototype.getPage = (url) => {
+ProductParser.prototype.fillData = function () {
+    this.name = this.parseName();
+    this.price = this.parsePrice();
+    this.currency = this.parseCurrency();
+    this.photo = this.parsePhoto();
+};
+
+ProductParser.prototype.printData = function () {
+    var name = this.name;
+    var price = this.price;
+    var currency = this.currency;
+    var photo = this.photo;
+
+    console.log("Name:", name );
+    console.log("Price:", price );
+    console.log("Currency:", currency);
+    console.log("Photo:", photo );
+};
+
+ProductParser.prototype.getPage = function (url) {
+    let self = this;
     $.ajax({
         method: 'GET',
-        url : url,
+        url : '/connection/get?url=' + url,
         contentType: 'text/plain',
-        success: function (result) {
-            this.page = result;
-            console.log("Received response " + result);
-        },
+        success: (result) => {
+            self.page = result;
+            self.fillData();
+            console.log("Received response!");
+            self.printData();
+            }
+        ,
         error : function (errors) {
             console.log(errors);
         }
     });
 };
 
-ProductParser.prototype.parseName = () => {
-    return this.page.find(nameSelector()).text();
+ProductParser.prototype.parseName = function () {
+    return $(this.page).find(this.nameSelector()).text();
 };
-ProductParser.prototype.parsePrice = () => {
-    return this.page.find(priceSelector()).text();
+ProductParser.prototype.parsePrice =function () {
+    return $(this.page).find(this.priceSelector()).text();
 };
-ProductParser.prototype.parseCurrency = () => {
-    return this.page.find(currencySelector()).text();
+ProductParser.prototype.parseCurrency = function () {
+    return $(this.page).find(this.currencySelector()).text();
 };
-ProductParser.prototype.parsePhoto = () => {
-    return this.page.find(photoSelector()).attr("src");
+ProductParser.prototype.parsePhoto = function () {
+    return $(this.page).find(this.photoSelector()).attr("src");
 };
 
 ProductParser.prototype.nameSelector = function () {
+    return "#name";
 };
 ProductParser.prototype.priceSelector = function () {
+    return "#price1";
+
 };
 ProductParser.prototype.currencySelector = function () {
+    return "#price1 .superscriptStyle"
+
 };
 ProductParser.prototype.photoSelector = function () {
+    return "#productImg";
+
 };
 
 function productParserJS() {

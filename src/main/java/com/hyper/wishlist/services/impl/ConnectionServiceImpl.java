@@ -1,10 +1,7 @@
-package com.hyper.wishlist;
+package com.hyper.wishlist.services.impl;
 
-import antlr.StringUtils;
-import org.junit.Assert;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.springframework.test.context.junit4.SpringRunner;
+import com.hyper.wishlist.services.ConnectionService;
+import org.springframework.stereotype.Service;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -12,14 +9,13 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-@RunWith(SpringRunner.class)
-public class ParserTest {
-
-    @Test
-    public void test(){
+@Service
+public class ConnectionServiceImpl implements ConnectionService {
+    @Override
+    public String getContent(String url) {
         try {
-            URL url = new URL("http://www.ikea.com/rs/sr/catalog/products/70334849/");
-            HttpURLConnection con = (HttpURLConnection) url.openConnection();
+            URL urlToBeExtracted = new URL(url);
+            HttpURLConnection con = (HttpURLConnection) urlToBeExtracted.openConnection();
             con.setRequestMethod("GET");
             con.setConnectTimeout(5000);
             con.setReadTimeout(5000);
@@ -35,9 +31,11 @@ public class ParserTest {
             in.close();
 
             con.disconnect();
-            Assert.assertTrue(!content.toString().equals(""));
+
+            return content.toString();
         } catch (IOException e) {
             e.printStackTrace();
         }
+        return "";
     }
 }
