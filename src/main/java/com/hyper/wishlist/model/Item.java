@@ -31,7 +31,6 @@ public class Item {
     @NotBlank
     private String photo;
 
-    @NotBlank
     private String note;
 
     @ManyToOne

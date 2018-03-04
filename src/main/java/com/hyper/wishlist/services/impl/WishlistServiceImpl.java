@@ -1,8 +1,9 @@
-package com.hyper.wishlist.services;
+package com.hyper.wishlist.services.impl;
 
 import com.hyper.wishlist.model.Item;
 import com.hyper.wishlist.model.Wishlist;
 import com.hyper.wishlist.repository.WishlistRepository;
+import com.hyper.wishlist.services.WishlistService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

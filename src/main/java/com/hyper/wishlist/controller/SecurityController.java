@@ -1,6 +1,7 @@
 package com.hyper.wishlist.controller;
 
 import com.hyper.wishlist.repository.UserRepository;
+import com.hyper.wishlist.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -14,14 +15,14 @@ import org.springframework.web.bind.annotation.RestController;
 public class SecurityController {
 
     @Autowired
-    private UserRepository userRepository;
+    private UserService userService;
 
     @ResponseBody
     @RequestMapping(value="/logged", method = RequestMethod.GET, produces="application/hal+json")
     public Long getCurrentLoggedUserId(){
         String username = SecurityContextHolder.getContext().getAuthentication().getName();
         if(username == null) return 0l;
-        return userRepository.findByUsername(username).getId();
+        return userService.findByUsername(username).getId();
     }
 
 }
