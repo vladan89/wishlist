@@ -34,6 +34,8 @@ export default class ProductParser{
         this.price = this.parsePrice();
         this.currency = this.parseCurrency();
         this.photo = this.parsePhoto();
+        this.page = "";
+        this.complete = true;
     }
 
     printData(){
@@ -60,7 +62,7 @@ export default class ProductParser{
 
     parseCurrency(){ return $(this.page).find(this.currencySelector()).text(); }
 
-    parsePhoto(){ return $(this.page).find(this.photoSelector()).attr("src"); }
+    parsePhoto(){ return this.link.getUrlOrigin() + $(this.page).find(this.photoSelector()).attr("src"); }
 
     nameSelector(){ return ""; }
 

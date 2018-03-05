@@ -160,7 +160,12 @@ li{
 #createDialog{
     display: block;
 }
+.modalContainer{
+    max-width: 300px;
+    width: 60%;
+    margin: 10% auto;
 
+}
 .modalDialog {
     position: fixed;
     font-family: Arial, Helvetica, sans-serif;
@@ -179,6 +184,7 @@ li{
 
 .modalDialog form input{
     display: block;
+    max-width: 96%;
     width: 100%;
     padding: 10px 5px;
     margin-bottom: 20px;
@@ -192,7 +198,6 @@ li{
 }
 
 .modalDialog > div {
-    width: 400px;
     position: relative;
     margin: 10% auto;
     padding: 10px 30px 10px 20px;;
@@ -404,4 +409,24 @@ footer p{
 }
 .bg-login {
     background-image: url(../img/login.jpg);
+}
+#preview{
+    max-width: 400px;
+    display: inline-block;
+}
+.previewTop{
+    text-align: center;
+}
+.previewTop img{
+    max-width: 60%;
+}
+.previewBottom{
+    float: left;
+    text-align: center;
+    max-width: 100%;
+    width: 100%;
+    padding: 10px 0px;
+}
+.previewBottom p{
+    margin: 10px 0px;
 }

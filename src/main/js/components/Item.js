@@ -19,15 +19,16 @@ export class Item extends React.Component{
         return (
             <div className={"wishlistItem"}>
                 <div className="wishlistItemPhoto">
-                    <img src="https://static.tehnomanija.rs/UserFiles/protected_products/77559.jpg" alt="Item photo"/>
+                    <img src={item.photo} alt="Item photo"/>
                 </div>
                 <div className={"wishlistItemData"}>
                 <p className={"wishlistItemSmallRow"}>Item</p>
                 <p className={"wishlistItemName"}>{item.name}</p>
                 <p className={"wishlistItemSmallRow"}>Price</p>
                 <p className={"wishlistItemPrice"}>{item.price} {item.currency.toUpperCase()}</p>
-                <p className={"wishlistItemSmallRow"}>Note</p>
-                <p className={"wishlistItemNote"}>{item.note}</p>
+
+                    {item.note!="" && <p className={"wishlistItemSmallRow"}>Note</p>}
+                    {item.note!="" && <p className={"wishlistItemNote"}>{item.note}</p>}
 
                 <p className={"wishlistItemSmallRow"}>Actions</p>
                 <button type="button" className="button greenButton " onClick={this.handleRemove}><MDCheck size={15} fill={"#ffffff"}/></button>

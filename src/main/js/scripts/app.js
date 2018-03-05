@@ -27,3 +27,24 @@ $("html").click(function (){
         $(".menu-list").animate({width:'toggle'},350);
     }
 });
+
+String.prototype.startsWithHttp = function(){
+    return this.substring(0, 7) === "http://";
+}
+
+String.prototype.startsWithHttps = function(){
+    return this.substring(0, 7) === "https://";
+}
+
+String.prototype.prependHttp = function(){
+    return "http://"+this;
+}
+
+String.prototype.prependHttps = function(){
+    return "https://"+this;
+}
+
+String.prototype.getUrlOrigin = function () {
+    var url = this.split("/");
+    return url[0]+"//"+url[2];
+}

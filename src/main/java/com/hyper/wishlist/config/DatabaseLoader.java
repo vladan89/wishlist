@@ -38,10 +38,6 @@ public class DatabaseLoader implements CommandLineRunner {
         this.userRepository.save(frodo);
 
         Wishlist firstWishlist = new Wishlist("John's Birthday", darth);
-        Item item1 = new Item("Acer 22\" LED LCD monitor","link1","501","eur","photo1.png","Note 1", firstWishlist);
-        Item item2 = new Item("X Wave Headphones With Microphone HD 380PC BLUE","link2","502","eur","photo2.png","Note 2", firstWishlist);
-        firstWishlist.getItems().add(item1);
-        firstWishlist.getItems().add(item2);
         this.wishlistRepository.save(firstWishlist);
     }
 }

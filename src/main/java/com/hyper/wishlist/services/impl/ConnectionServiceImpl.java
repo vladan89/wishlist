@@ -15,14 +15,18 @@ public class ConnectionServiceImpl implements ConnectionService {
     @Override
     public String getContent(String url) {
         try {
+
             URL urlToBeExtracted = new URL(url);
+
             /**########### PROXY CONFIG ########################**/
-            /*String proxy = "proxy.rcub.bg.ac.rs";
+            /*
+            String proxy = "proxy.rcub.bg.ac.rs";
             String port = "8080";
 
             Properties systemProperties = System.getProperties();
             systemProperties.setProperty("http.proxyHost",proxy);
-            systemProperties.setProperty("http.proxyPort",port);*/
+            systemProperties.setProperty("http.proxyPort",port);
+            */
 
             /*#################################################*/
 
