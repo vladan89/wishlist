@@ -2,6 +2,7 @@ import React from "react";
 const client = require('../client');
 import {Item} from "./Item";
 import {CreateDialog} from "./CreateDialog";
+import {CreateItemDialog} from "./CreateItemDialog";
 
 export default class WishlistDetails extends React.Component{
 
@@ -9,7 +10,7 @@ export default class WishlistDetails extends React.Component{
         super(props);
         this.state = {
             items : [],
-            attributes: ["name", "link","price","currency","photo","note"]
+            attributes: ["link"]
         }
 
         this.onItemRemove = this.onItemRemove.bind(this);
@@ -55,7 +56,7 @@ export default class WishlistDetails extends React.Component{
         var items = this.state.items.map((item, index) => <Item key={index} onItemRemove={this.onItemRemove} item={item} /> );
         return (
             <div>
-                <CreateDialog attributes={this.state.attributes} purpose={"item"} onItemCreate={this.onItemCreate}/>
+                <CreateItemDialog attributes={this.state.attributes} purpose={"item"} onItemCreate={this.onItemCreate}/>
                 {items.length === 0 ? "No items in this wishlist" : items}
             </div>
         )

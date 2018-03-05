@@ -1,20 +1,17 @@
-function IkeaProductParser(url) {
-    ProductParser.call(this, url);
-}
+import ProductParser from "./ProductParser";
 
-IkeaProductParser.prototype.nameSelector = function () {
-    return "#name";
-};
-IkeaProductParser.prototype.priceSelector = function () {
-    return "#price1";
-};
-IkeaProductParser.prototype.currencySelector = function () {
-    return "#price1 .superscriptStyle"
-};
-IkeaProductParser.prototype.photoSelector = function () {
-    return "#productImg";
-};
+export default class IkeaProductParser extends ProductParser{
+    constructor(link){
+        super(link);
+    }
 
-function IkeaProductParserJS() {
-    console.log("IkeaProductParserJS defined");
+    parsePrice(){
+        var str = $(this.page).find(this.priceSelector()).text().trim();
+        return str.slice(-3).trim() === "RSD" ? str.substring(0,str.length - 3) : "0";
+    }
+
+    nameSelector() { return "#name"; }
+    priceSelector() { return "#price1"; }
+    currencySelector() { return "#price1 .superscriptStyle"; }
+    photoSelector() { return "#productImg"; }
 }
