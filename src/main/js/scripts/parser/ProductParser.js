@@ -34,8 +34,6 @@ export default class ProductParser{
         this.price = this.parsePrice();
         this.currency = this.parseCurrency();
         this.photo = this.parsePhoto();
-        this.page = "";
-        this.complete = true;
     }
 
     printData(){

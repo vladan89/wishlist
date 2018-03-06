@@ -26,7 +26,7 @@ public class ConnectionServiceTest {
     @Test
     public void test(){
 
-        String content = connectionService.getContent("http://www.ikea.com/rs/sr/catalog/products/70334849/");
+        String content = connectionService.getContent("https://www.tehnomanija.rs/tv-i-video/full-hd/samsung-televizor-ue40m5002akxxh.html");
         Assert.assertTrue(!content.toString().equals(""));
 
     }

@@ -19,13 +19,17 @@ public class ConnectionServiceImpl implements ConnectionService {
             URL urlToBeExtracted = new URL(url);
 
             /**########### PROXY CONFIG ########################**/
-            /*
-            String proxy = "proxy.rcub.bg.ac.rs";
+
+            /*String proxy = "proxy.rcub.bg.ac.rs";
             String port = "8080";
 
             Properties systemProperties = System.getProperties();
+            //http
             systemProperties.setProperty("http.proxyHost",proxy);
             systemProperties.setProperty("http.proxyPort",port);
+            //https
+            systemProperties.setProperty("https.proxyHost",proxy);
+            systemProperties.setProperty("https.proxyPort",port);
             */
 
             /*#################################################*/

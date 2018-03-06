@@ -33,7 +33,7 @@ String.prototype.startsWithHttp = function(){
 }
 
 String.prototype.startsWithHttps = function(){
-    return this.substring(0, 7) === "https://";
+    return this.substring(0, 8) === "https://";
 }
 
 String.prototype.prependHttp = function(){

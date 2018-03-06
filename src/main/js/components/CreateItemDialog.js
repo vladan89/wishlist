@@ -3,6 +3,9 @@ import ReactDOM from "react-dom";
 
 import MDCreate from "react-icons/lib/fa/plus";
 import IkeaProductParser from "../scripts/parser/IkeaProductParser";
+import TehnomanijaProductParser from "../scripts/parser/TehnomanijaProductParser";
+import WinWinProductParser from "../scripts/parser/WinWinProductParser";
+import GigatronProductParser from "../scripts/parser/GigatronProductParser";
 
 export class CreateItemDialog extends React.Component {
 
@@ -24,14 +27,23 @@ export class CreateItemDialog extends React.Component {
     }
 
     getItemContent(e){
+
         var link = e.target.value;
         var httpCheck = link.startsWithHttp();
         var httpsCheck = link.startsWithHttps();
         var prependedLink = "";
+
         if(httpCheck === false && httpsCheck === false) prependedLink = link.prependHttp();
         else prependedLink = link;
 
-        var parser = new IkeaProductParser(prependedLink);
+        switch(prependedLink.getUrlOrigin()){
+            case "http://www.winwin.rs": var parser = new WinWinProductParser(prependedLink); break;
+            case "https://www.gigatron.rs": var parser = new GigatronProductParser(prependedLink); break;
+            case "http://www.ikea.com": var parser = new IkeaProductParser(prependedLink); break;
+            case "https://www.tehnomanija.rs": var parser = new TehnomanijaProductParser(prependedLink); break;
+            default: console.log("Error with link"); return;
+        }
+
         parser.parse();
 
         setTimeout(()=>{
@@ -45,7 +57,7 @@ export class CreateItemDialog extends React.Component {
                 link: obj.link,
                 photo: obj.photo
             });
-        }, 1000);
+        }, 2500);
 
 
     }
