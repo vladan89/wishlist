@@ -44,16 +44,6 @@ export default class ProductParser{
         console.log("Link:", this.link );
     }
 
-    getName(){ return this.name; }
-
-    getPrice(){ return this.price; }
-
-    getCurrency(){ return this.currency; }
-
-    getPhoto(){ return this.photo; }
-
-    getLink(){ return this.link; }
-
     parseName(){ return $(this.page).find(this.nameSelector()).text(); }
 
     parsePrice(){ return $(this.page).find(this.priceSelector()).text(); }

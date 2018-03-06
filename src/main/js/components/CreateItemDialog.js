@@ -44,6 +44,8 @@ export class CreateItemDialog extends React.Component {
             default: console.log("Error with link"); return;
         }
 
+        //var parser = new ProductParser(prependedLink);
+
         parser.parse();
 
         setTimeout(()=>{

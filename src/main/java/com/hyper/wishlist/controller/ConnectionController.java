@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.net.UnknownHostException;
+
 @Controller
 @RequestMapping(value = "/connection")
 public class ConnectionController {
@@ -17,7 +19,12 @@ public class ConnectionController {
 
     @RequestMapping(value = "/get", method = RequestMethod.GET, produces = "text/plain")
     public @ResponseBody String getWebsiteContent(@RequestParam("url") String url){
-        return connectionService.getContent(url);
+        try {
+            return connectionService.getContent(url);
+        } catch (UnknownHostException e) {
+            e.printStackTrace();
+            return "UNKNOWN HOST";
+        }
     }
 
 }
