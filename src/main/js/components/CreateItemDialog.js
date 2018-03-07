@@ -78,14 +78,14 @@ export class CreateItemDialog extends React.Component {
                     <button className="button blueButton">
                         <MDCreate size={15} fill={"#ffffff"}/>
                     </button>
-                    <span className={"middleHeightLink blue"}>Create {this.props.purpose}</span>
+                    <span className={"middleHeightLink blue"}>Create item</span>
                 </a>
 
                 <div id="createDialog" className="modalDialog">
                     <div className={"modalContainer"}>
                         <a href="#" title="Close" className="close" onClick={this.closeModal}>X</a>
 
-                        <p className="dialogTitle blue">Create new {this.props.purpose}</p>
+                        <p className="dialogTitle blue">Create new item</p>
 
                         <form>
 

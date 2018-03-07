@@ -1,5 +1,4 @@
 import React from "react";
-const client = require('../client');
 import {NavLink} from "react-router-dom";
 import {CreateDialog} from "./CreateDialog";
 
@@ -10,45 +9,27 @@ export default class WishlistList extends React.Component{
     constructor(props){
         super(props);
         this.state = {
-            wishlists: [],
             attributes: ["name"]
         };
         this.onWishlistCreate = this.onWishlistCreate.bind(this);
     }
 
     componentDidMount() {
-        client({method: 'GET', path: '/security/logged'}).done(response => {
-            this.setState({loggedUserId: response.entity});
-            client({method: "GET", path:"/api/users/"+response.entity+"/wishlists"}).done(response => {
-                this.setState({wishlists: response.entity._embedded.wishlists});
-            });
-        });
+        this.props.getLoggedUserId();
     }
 
-    onWishlistRemove(wishlist){
-        client({method: 'DELETE', path: wishlist._links.self.href}).done(response => {
-            var updatedWishlist = this.state.wishlists.filter(current => current._links.self.href !== wishlist._links.self.href );
-            this.setState({wishlists : updatedWishlist});
-        });
+    onWishlistRemove(id){
+        this.props.removeWishlist(id);
     }
 
     onWishlistCreate(newWishlist) {
-        return client({
-            method: 'POST',
-            path: "/api/wishlists",
-            entity: newWishlist,
-            headers: {'Content-Type': 'application/json'}
-        }).done( response => {
-            this.setState({
-               wishlists: [...this.state.wishlists, {user: response.entity.user, name: newWishlist.name, _links: response.entity._links}]
-            });
-        });
+        this.props.createWishlist(newWishlist);
     }
 
     render() {
-        var wishlists = this.state.wishlists.map(wishlist => (
+        var wishlists = this.props.wishlist.wishlists.map(wishlist => (
             <div  key={wishlist._links.self.href} >
-                <button type="button" className="button redButton" onClick={()=>this.onWishlistRemove(wishlist)}>
+                <button type="button" className="button redButton" onClick={(id)=>this.onWishlistRemove(wishlist._links.self.href.split("/").pop())}>
                     <MDDelete size={15} fill={"#ffffff"}/>
                 </button>
                 <NavLink className={"wishlistLink middleHeightLink"} to={"/wishlists/"+ wishlist._links.self.href.split("/").pop()}>{wishlist.name}</NavLink>

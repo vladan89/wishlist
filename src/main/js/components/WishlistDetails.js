@@ -1,62 +1,33 @@
 import React from "react";
-const client = require('../client');
 import {Item} from "./Item";
-import {CreateDialog} from "./CreateDialog";
 import {CreateItemDialog} from "./CreateItemDialog";
 
 export default class WishlistDetails extends React.Component{
 
     constructor(props){
         super(props);
-        this.state = {
-            items : [],
-            attributes: ["link"]
-        }
-
-        this.onItemRemove = this.onItemRemove.bind(this);
         this.onItemCreate = this.onItemCreate.bind(this);
     }
 
     componentDidMount(){
-        var id = this.props.match.params.id;
-        client({method: 'GET', path: '/api/wishlists/'+id+'/items'}).done(response => {
-            this.setState({items: response.entity._embedded.items});
-        });
+        this.props.getItemsByWishlistId(this.props.match.params.id);
     }
 
-    onItemRemove(item){
-        client({method: 'DELETE', path: item._links.self.href}).done(response => {
-            var updatedItems = this.state.items.filter(current => current._links.self.href !== item._links.self.href );
-            this.setState({items : updatedItems});
-        });
+    onItemRemove(id){
+        this.props.removeItem(id);
     }
 
     onItemCreate(newItem) {
         var {name, link, price, currency, photo, note} = newItem;
         var wishlist = window.location.href.split("#")[0];
-        return client({
-            method: 'POST',
-            path: "/api/items",
-            entity: {name, link, price, currency, photo, note, wishlist},
-            headers: {'Content-Type': 'application/json'}
-        }).done( response => {
-            this.setState({
-                items: [...this.state.items,
-                        {
-                            user: response.entity.user,
-                            name, link, price, currency, photo, note, wishlist,
-                            _links: response.entity._links
-                        }
-                    ]
-            });
-        });
+        this.props.createItem({name, link, price, currency, photo, note, wishlist});
     }
 
     render() {
-        var items = this.state.items.map((item, index) => <Item key={index} onItemRemove={this.onItemRemove} item={item} /> );
+        var items = this.props.item.items.map((item, index) => <Item key={index} onItemRemove={(id)=>this.onItemRemove(item._links.self.href.split("/").pop())} item={item} /> );
         return (
             <div>
-                <CreateItemDialog attributes={this.state.attributes} purpose={"item"} onItemCreate={this.onItemCreate}/>
+                <CreateItemDialog item={this.props.item} getItemContent={this.props.getItemContent} onItemCreate={this.onItemCreate}/>
                 {items.length === 0 ? "No items in this wishlist" : items}
             </div>
         )
