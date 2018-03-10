@@ -15,22 +15,10 @@ import {Login} from "../components/Login";
 import {Footer} from "../components/Footer";
 
 import {getLoggedUserId} from "../actions/securityActions";
-import {createWishlist, getWishlistsByUserId, removeWishlist} from "../actions/wishlistActions";
+import {createWishlist, getWishlistById, getWishlistsByUserId, removeWishlist} from "../actions/wishlistActions";
 import {createItem, getItemsByWishlistId, removeItem} from "../actions/itemActions";
 
-
-const renderMergedProps = (component, ...rest) => {
-    const finalProps = Object.assign({}, ...rest);
-    return React.createElement(component, finalProps);
-}
-
-const PropsRoute = ({ component, ...rest }) => {
-    return (
-        <Route {...rest} render={routeProps => {
-                return renderMergedProps(component, routeProps, rest);
-        }}/>
-    );
-}
+import {PropsRoute} from "../components/PropsRoute";
 
 class App extends React.Component {
 
@@ -42,25 +30,30 @@ class App extends React.Component {
         return (
                 <Router history = {browserHistory}>
                     <div>
-                        <Header />
+                        <Header loggedIn={this.props.security.id}/>
                         <div className={location.pathname.substring(0,6) === "/login" ? "content horizontalyCentered": "content"}>
                             <Switch>
 
-                                <PropsRoute exact path="/" component={WishlistList}
+                                <PropsRoute exact path="/" component={Home}
                                     wishlist = {this.props.wishlist}
                                     getLoggedUserId = {this.props.getLoggedUserId}
-                                    getWishlistsByUserId = {this.props.getWishlistsByUserId}
                                     createWishlist = {this.props.createWishlist}
-                                    removeWishlist = {this.props.removeWishlist}/>
+                                    removeWishlist = {this.props.removeWishlist} />
 
                                 <PropsRoute path="/wishlists/:id" component={WishlistDetails}
+                                    wishlist = {this.props.wishlist}
+                                    getLoggedUserId = {this.props.getLoggedUserId}
+                                    createWishlist = {this.props.createWishlist}
+                                    removeWishlist = {this.props.removeWishlist}
                                     item = {this.props.item}
                                     getItemsByWishlistId = {this.props.getItemsByWishlistId}
                                     createItem = {this.props.createItem}
                                     removeItem = {this.props.removeItem}
-                                />
-                                <PropsRoute path="/wishlists"  component={WishlistList}/>
+                                    getWishlistById = {this.props.getWishlistById} />
+
                                 <PropsRoute path="/login"  component={Login}/>
+
+                                <PropsRoute path="/wishlists"  component={Home}/>
                                 <PropsRoute component={NotFound} />
                             </Switch>
                         </div>
@@ -101,7 +94,15 @@ const mapDispatchToProps = (dispatch) => {
         },
         removeItem:(id)=>{
             dispatch(removeItem(id));
+        },
+        getWishlistById:(id)=>{
+            dispatch(getWishlistById(id))
+        },
+        getWishlistsByUserId:(id)=>{
+            dispatch(getWishlistsByUserId(id));
         }
+
+
     }
 }
 

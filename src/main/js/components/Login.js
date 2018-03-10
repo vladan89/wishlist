@@ -8,14 +8,15 @@ export class Login extends React.Component{
 
     render() {
         return (
-                <div className={"verticalyCentered formDiv"}>
+                <div className={"verticalyCentered smallForm"}>
                     <div className={"background bg-login"}><div className="black-bg"></div></div>
-                    <div className={"movedUp"}>
-                        <p className="formCaption">Login</p>
-                        <form method={"POST"} action={"/login"} className={"form"}>
-                            <input type="text" name="username" placeholder="Username" autoComplete="off" />
-                            <input type="password" name="password" placeholder="Password" autoComplete="off"/>
-                            <input type="submit" value={"ENTER"}/>
+                    <div className={"movedUp formWrapper"}>
+                        <p className="darkFormCaption">Login</p>
+                        <form method={"POST"} action={"/login"}>
+                            <input type="text" className={"darkFormInput"} name="username" placeholder="Username" autoComplete="off" />
+                            <input type="password" className={"darkFormInput"} name="password" placeholder="Password" autoComplete="off"/>
+                            <input type="submit" className={"submitButton"} value={"ENTER"}/>
+                            <span className={"formSpan"}><a href="#">Lost Your password?</a></span>
                         </form>
                     </div>
                 </div>

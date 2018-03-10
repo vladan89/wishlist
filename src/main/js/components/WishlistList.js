@@ -1,14 +1,14 @@
 import React from "react";
 import {NavLink} from "react-router-dom";
-import {CreateDialog} from "./CreateDialog";
 
-import MDDelete from "react-icons/lib/fa/close";
+import {CreateWishlistDialog} from "./CreateWishlistDialog";
 
 export default class WishlistList extends React.Component{
 
     constructor(props){
         super(props);
         this.state = {
+            deleteButtonVisibility: false,
             attributes: ["name"]
         };
         this.onWishlistCreate = this.onWishlistCreate.bind(this);
@@ -18,27 +18,25 @@ export default class WishlistList extends React.Component{
         this.props.getLoggedUserId();
     }
 
-    onWishlistRemove(id){
-        this.props.removeWishlist(id);
-    }
-
     onWishlistCreate(newWishlist) {
         this.props.createWishlist(newWishlist);
     }
 
     render() {
         var wishlists = this.props.wishlist.wishlists.map(wishlist => (
-            <div  key={wishlist._links.self.href} >
-                <button type="button" className="button redButton" onClick={(id)=>this.onWishlistRemove(wishlist._links.self.href.split("/").pop())}>
-                    <MDDelete size={15} fill={"#ffffff"}/>
-                </button>
-                <NavLink className={"wishlistLink middleHeightLink"} to={"/wishlists/"+ wishlist._links.self.href.split("/").pop()}>{wishlist.name}</NavLink>
+            <div  key={wishlist._links.self.href} className={"sidebarLink"}>
+                <NavLink className={"wishlistLink gray"} activeClassName={"activeSidebarLink"} to={"/wishlists/"+ wishlist._links.self.href.split("/").pop()}>{wishlist.name}</NavLink>
             </div>)
         );
         return (
             <div>
-                <CreateDialog attributes={this.state.attributes} purpose={"wishlist"} onWishlistCreate={this.onWishlistCreate}/>
-                {wishlists.length === 0 ? "No wishlists" : wishlists}
+                {wishlists.length === 0 && <p className={"wishlistLink gray"}>No Wishlists</p>}
+
+                <div className="scrollable sidebarLink">
+                    {wishlists.length>0 && wishlists}
+                </div>
+
+                <CreateWishlistDialog attributes={["name"]} purpose={"wishlist"} onWishlistCreate={this.onWishlistCreate}/>
             </div>
         )
     }

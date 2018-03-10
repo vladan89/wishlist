@@ -1,20 +1,14 @@
 import React from "react";
-import {Item} from "./Item";
 import {CreateItemDialog} from "./CreateItemDialog";
+import {Sidebar} from "./Sidebar";
+import {ManageWishlistContent} from "./ManageWishlistContent";
+import {WishlistItemsList} from "./WishlistItemsList";
 
 export default class WishlistDetails extends React.Component{
 
     constructor(props){
         super(props);
         this.onItemCreate = this.onItemCreate.bind(this);
-    }
-
-    componentDidMount(){
-        this.props.getItemsByWishlistId(this.props.match.params.id);
-    }
-
-    onItemRemove(id){
-        this.props.removeItem(id);
     }
 
     onItemCreate(newItem) {
@@ -24,12 +18,34 @@ export default class WishlistDetails extends React.Component{
     }
 
     render() {
-        var items = this.props.item.items.map((item, index) => <Item key={index} onItemRemove={(id)=>this.onItemRemove(item._links.self.href.split("/").pop())} item={item} /> );
         return (
-            <div>
-                <CreateItemDialog item={this.props.item} getItemContent={this.props.getItemContent} onItemCreate={this.onItemCreate}/>
-                {items.length === 0 ? "No items in this wishlist" : items}
+            <div className="container">
+
+            <Sidebar wishlist={this.props.wishlist}
+                     createWishlist = {this.props.createWishlist}
+                     getLoggedUserId = {this.props.getLoggedUserId}/>
+
+                <div className="mainContent">
+
+                    <ManageWishlistContent id={this.props.match.params.id}
+                                           wishlist = {this.props.wishlist}
+                                           getWishlistById = {this.props.getWishlistById}
+                                           removeWishlist={this.props.removeWishlist}/>
+
+                    <CreateItemDialog item={this.props.item}
+                                      getItemContent={this.props.getItemContent}
+                                      onItemCreate={this.onItemCreate}/>
+
+                    <WishlistItemsList id={this.props.match.params.id}
+                                       item = {this.props.item}
+                                       removeItem={this.props.removeItem}
+                                       getItemsByWishlistId={this.props.getItemsByWishlistId}/>
+
+
             </div>
+
+
+        </div>
         )
     }
 }

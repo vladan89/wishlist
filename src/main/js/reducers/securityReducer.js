@@ -6,7 +6,7 @@ const securityReducer = (state = {
             state = {...state};
             break;
         case "GET_LOGGED_USER_ID_FULFILLED":
-            state = {...state, id: action.payload };
+            state = {...state, id: action.payload.data };
             break;
         case "GET_LOGGED_USER_ID_REJECTED":
             state = {...state, error: action.payload};

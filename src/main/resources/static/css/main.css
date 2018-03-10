@@ -6,10 +6,7 @@
     margin: 0px;
     outline: none;
     border: none;
-    font-family: "Raleway", sans-serif;
-}
-body{
-    background-color: #f3f3f3;
+    font-family: helvetica;
 }
 #react{
     max-width: 1200px;
@@ -22,6 +19,18 @@ li{
     list-style-type: none;
 }
 
+nav.menu ul li a{
+    background: none;
+    padding: 30px 15px;
+    display: block;
+    color: #777777;
+    text-transform: uppercase;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+
+/*
 #menu{
     float: right;
     max-width: 500px;
@@ -38,7 +47,7 @@ li{
     background: gray;
     padding: 10px 10px;
     cursor: pointer;
-    margin: 10px;
+    margin: 20px;
 }
 .menu-list{
     display: inline-block;
@@ -59,24 +68,15 @@ li{
     color:white;
 }
 .menu-list > span {
-    color: #e5efef;
+    color: #efefef;
     font-weight: normal;
-    text-transform: uppercase;
     font-size: 18px;
     display: inline-block;
-    background: #5bb5d3;
-    display: block;
-    padding-left: 10px;
-    padding: 30px 0px 30px 10px;
-    letter-spacing: 1px;
-}
+    text-transform: uppercase;
+    padding: 30px 10px 30px
+}*/
 .activeLink{
     color: #5bb5d3!important;
-}
-.wishlistLink{
-    display: inline-block;
-    margin: 5px 0px;
-    color: #444;
 }
 .headerIcon{
     position: relative;
@@ -133,6 +133,9 @@ li{
 }
 .blue{
     color: #5bb5d3;
+}
+.gray{
+    color: #877575;
 }
 .modalButton{
     margin: 0px;
@@ -255,7 +258,10 @@ li{
 }
 
 /*HEADER*/
-
+header{
+    display: block;
+    margin-bottom: 20px;
+}
 .clear{
     clear: both;
 }
@@ -267,9 +273,12 @@ li{
     display: inline-block;
     float: right;
 }
-.logo img{
-    max-width: 60%;
-    width:100%;
+.logo a{
+    display: block;
+    color: #777;
+    font-weight: bold;
+    font-size: 30px;
+    padding: 24px 20px;
 }
 /**CSS FLEX**/
 
@@ -324,58 +333,23 @@ footer p{
     width: 100%;
 }
 
-.form{
-    max-width: 600px;
-    margin: 0 auto;
-    padding: 5px;
-}
-.form input, .form textarea {
-    display: block;
-    margin: 10px 0;
-    padding: 10px 5px;
-    max-width: 96%;
-    width: 96%;
-    background: #e1e1e1;
-    outline: none;
-    border: none;
-    color: gray;
-    border-radius: 2px;
-}
-.form input[type="submit"] {
-    border: none;
-    width: 100px;
-    margin: 0px auto;
-    color:white;
-    padding: 10px;
-    background-color: #5bb5d3!important;
-    margin-top: 20px;
-}
-.formCaption{
-    text-align: center;
-    color: #5bb5d3;
-    text-transform: uppercase;
-    margin: 25px 0px;
-    font-size: 25px;
-}
+
 .content{
     min-height: 90vh;
     display: flex;
 }
 .btnAsMenuLink{
-    color: #b5b0b0;
-    display: block;
-    text-transform: uppercase;
-    padding: 20px 100px 20px 10px;
-    transition: 0.5s all;
-    font-size: 14px;
-    letter-spacing: 1px;
     background: none;
+    padding: 30px 15px;
+    display: block;
+    color: #777777;
+    font-size: 16px;
+    font-weight: bold;
+    transition: 0.5s all;
     cursor: pointer;
-    border: none;
-    outline: none;
 }
 .btnAsMenuLink:hover{
-    color:white;
+    color:#241b24;
 }
 .verticalyCentered{
     align-self: center;
@@ -386,10 +360,6 @@ footer p{
 .movedUp{
     position: relative;
     bottom: 50px;
-}
-.formDiv{
-    max-width: 350px;
-    width: 100%;
 }
 .background{
     width: 100%;
@@ -429,4 +399,177 @@ footer p{
 }
 .previewBottom p{
     margin: 10px 0px;
+}
+
+/*FORM LOGIN*/
+
+.formWrapper{
+    background: white;
+}
+
+.smallForm{
+    max-width: 350px;
+    width: 100%;
+}
+.form{
+    max-width: 600px;
+    margin: 0 auto;
+}
+.darkFormCaption{
+    background: #241b24;
+    color: white;
+    font-weight: bold;
+    padding: 30px 20px;
+    font-size: 30px;
+}
+.darkFormInput{
+    display: block;
+    margin: 30px 20px;
+    padding: 20px 15px;
+    max-width: 80%;
+    width: 100%;
+    background: #e4dfdf;
+    outline: none;
+    border: none;
+    color: #241b24;
+    border-radius: 2px;
+    font-weight: bold;
+}
+
+
+.submitButton{
+    border: none;
+    width: 100px;
+    color: white;
+    padding: 10px;
+    background-color: #241b24!important;
+    margin: 20px;
+    display: inline-block;
+    font-size: 16px;
+    margin-top: 0px;
+    margin-bottom: 25px;
+    font-weight: bold;
+    cursor:pointer;
+}
+.formSpan a{
+    font-weight: bold;
+    color: #877575;
+    font-size: 13px;
+    transition: 0.5s all;
+}
+.formSpan a:hover{
+    color: #241b24;
+}
+
+/*HOME*/
+
+.container{
+    max-width:1200px;
+    width:100%;
+    margin:0px auto;
+    padding:10px;
+    display:flex;
+}
+.sidebar{
+    float:left;
+    margin: 0px 10px;
+}
+.sidebar, .scrollable{
+    max-width:250px;
+    width:100%;
+    display:inline-block;
+}
+.scrollable{
+    max-height: 300px;
+    position:absolute;
+    overflow-y:scroll;
+    position:relative;
+}
+.mainContent{
+    max-width:80%;
+    width:100%;
+    float:left;
+    margin: 0px 10px;
+}
+
+/*to hide scrollbar on scrollable div*/
+
+html {
+    overflow: scroll;
+    overflow-x: hidden;
+}
+::-webkit-scrollbar {
+    width: 0px;
+    background: transparent;
+}
+::-webkit-scrollbar-thumb {
+    background: transparent;
+}
+
+
+.sidebarTitle{
+    background: #5bb5d3;
+    padding: 10px 0px;
+    font-size: 16px;
+    color: white;
+    padding-left: 5px;
+    text-transform: uppercase;
+    cursor: default;
+    font-weight: bold;
+}
+.sidebarLink{
+
+}
+.sidebarLink a{
+    width: 100%;
+    transition: 0.5s all;
+    display: block;
+    text-transform: uppercase;
+    font-weight: normal;
+    padding: 15px 0px;
+    padding-left: 5px;
+}
+.sidebarLink a:hover{
+    background: #EEEEEE;
+}
+.activeSidebarLink{
+    background: #EEEEEE!important;
+}
+
+.actionLink{
+    padding: 10px 0px;
+    text-transform: uppercase;
+    color: #5bb5d3;
+    margin: 10px 0px;
+    display: block;
+    font-size: 15px;
+    transition: 0.5s all;
+}
+.pageSubtitle{
+    color: #afabab;
+    font-size: 20px;
+    margin: 10px 0px;
+    text-transform: uppercase;
+    margin-top: 0px;
+    margin-bottom: 10px;
+}
+.pageTitle{
+    color: #5bb5d3;
+    font-size: 36px;
+    text-transform: uppercase;
+}
+.btnActionLink{
+    background: none;
+    cursor: pointer;
+    transition: 0.5s all;
+}
+.actionLink:hover, .btnActionLink:hover{
+    color: #777777;
+}
+.noItems{
+    background-image: url(../img/noItems.png);
+    width: 100%;
+    height: 400px;
+    background-repeat: no-repeat;
+    background-position: top;
 }

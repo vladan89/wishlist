@@ -74,14 +74,11 @@ export class CreateItemDialog extends React.Component {
     render() {
         return (
             <div>
-                <a href="#createDialog" className={"createDialogLink"}>
-                    <button className="button blueButton">
-                        <MDCreate size={15} fill={"#ffffff"}/>
-                    </button>
-                    <span className={"middleHeightLink blue"}>Create item</span>
+                <a href="#createItemDialog" className={"createDialogLink"}>
+                   <span className={"actionLink"}>Create item</span>
                 </a>
 
-                <div id="createDialog" className="modalDialog">
+                <div id="createItemDialog" className="modalDialog">
                     <div className={"modalContainer"}>
                         <a href="#" title="Close" className="close" onClick={this.closeModal}>X</a>
 

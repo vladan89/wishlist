@@ -1,5 +1,13 @@
 import axios from "axios";
 
+export function getWishlistById(id) {
+    const request = axios.get(`/api/wishlists/${id}`);
+    return {
+        type: "GET_WISHLIST_BY_ID",
+        payload: request
+    }
+}
+
 export function getWishlistsByUserId(id) {
     const request = axios.get(`/api/users/${id}/wishlists`);
     return {
