@@ -15,7 +15,10 @@ import {Login} from "../components/Login";
 import {Footer} from "../components/Footer";
 
 import {getLoggedUserId} from "../actions/securityActions";
-import {createWishlist, getWishlistById, getWishlistsByUserId, removeWishlist} from "../actions/wishlistActions";
+import {
+    createWishlist, getWishlistById, getWishlistsByUserId, removeWishlist,
+    updateWishlistSearch
+} from "../actions/wishlistActions";
 import {createItem, getItemsByWishlistId, removeItem} from "../actions/itemActions";
 
 import {PropsRoute} from "../components/PropsRoute";
@@ -38,7 +41,9 @@ class App extends React.Component {
                                     wishlist = {this.props.wishlist}
                                     getLoggedUserId = {this.props.getLoggedUserId}
                                     createWishlist = {this.props.createWishlist}
-                                    removeWishlist = {this.props.removeWishlist} />
+                                    removeWishlist = {this.props.removeWishlist}
+                                    wishlistSearch={this.props.wishlist.search}
+                                    updateWishlistSearch = {this.props.updateWishlistSearch}/>
 
                                 <PropsRoute path="/wishlists/:id" component={WishlistDetails}
                                     wishlist = {this.props.wishlist}
@@ -49,7 +54,9 @@ class App extends React.Component {
                                     getItemsByWishlistId = {this.props.getItemsByWishlistId}
                                     createItem = {this.props.createItem}
                                     removeItem = {this.props.removeItem}
-                                    getWishlistById = {this.props.getWishlistById} />
+                                    getWishlistById = {this.props.getWishlistById}
+                                    wishlistSearch={this.props.wishlist.search}
+                                    updateWishlistSearch = {this.props.updateWishlistSearch}/>
 
                                 <PropsRoute path="/login"  component={Login}/>
 
@@ -100,6 +107,9 @@ const mapDispatchToProps = (dispatch) => {
         },
         getWishlistsByUserId:(id)=>{
             dispatch(getWishlistsByUserId(id));
+        },
+        updateWishlistSearch:(string)=>{
+            dispatch(updateWishlistSearch(string));
         }
 
 

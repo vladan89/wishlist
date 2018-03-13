@@ -25,12 +25,14 @@ export default class WishlistList extends React.Component{
     render() {
         var wishlists = this.props.wishlist.wishlists.map(wishlist => (
             <div  key={wishlist._links.self.href} className={"sidebarLink"}>
-                <NavLink className={"wishlistLink gray"} activeClassName={"activeSidebarLink"} to={"/wishlists/"+ wishlist._links.self.href.split("/").pop()}>{wishlist.name}</NavLink>
+                <NavLink activeClassName={"activeSidebarLink"} to={"/wishlists/"+ wishlist._links.self.href.split("/").pop()}>{wishlist.name}</NavLink>
             </div>)
         );
         return (
             <div>
-                {wishlists.length === 0 && <p className={"wishlistLink gray"}>No Wishlists</p>}
+                <p className={"sidebarTitle"}>Wishlists</p>
+
+                {wishlists.length === 0 && <p className={"noResults"}>No Wishlists</p>}
 
                 <div className="scrollable sidebarLink">
                     {wishlists.length>0 && wishlists}

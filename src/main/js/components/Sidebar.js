@@ -1,9 +1,12 @@
 import React from "react";
 import WishlistList from "./WishlistList";
+import {WishlistSearch} from "./WishlistSearch";
 
 export const Sidebar = (props) => (
     <div className="sidebar">
-        <p className={"sidebarTitle"}>Wishlists</p>
+        <WishlistSearch wishlist={props.wishlist}
+                        wishlistSearch={props.wishlist.search}
+                        updateWishlistSearch = {props.updateWishlistSearch} />
         <WishlistList wishlist={props.wishlist}
                       getLoggedUserId = {props.getLoggedUserId}
                       createWishlist={props.createWishlist}/>

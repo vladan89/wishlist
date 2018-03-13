@@ -6,7 +6,9 @@ export const Home = (props) => (
         <Sidebar wishlist={props.wishlist}
                  getLoggedUserId={props.getLoggedUserId}
                  removeWishlist={props.removeWishlist}
-                 createWishlist = {props.createWishlist}/>
+                 createWishlist = {props.createWishlist}
+                 wishlistSearch={props.wishlistSearch}
+                 updateWishlistSearch = {props.updateWishlistSearch}/>
         <div className="mainContent">
             Content
         </div>

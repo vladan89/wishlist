@@ -27,6 +27,7 @@ export class WishlistItemsList extends React.Component{
         return(
             <div>
                 {items.length > 0 && items}
+                {items.length == 0 && <p className="noItemsParagraph">There's nothing in here<br/><br/>Make a wish!</p>}
                 {items.length === 0 && <div className="noItems"></div>}
             </div>
          );

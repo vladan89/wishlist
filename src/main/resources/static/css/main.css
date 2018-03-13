@@ -1,6 +1,4 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto:400,500,700');
-@import url('https://fonts.googleapis.com/css?family=Raleway');
-
 *{
     padding: 0px;
     margin: 0px;
@@ -18,7 +16,6 @@ a{
 li{
     list-style-type: none;
 }
-
 nav.menu ul li a{
     background: none;
     padding: 30px 15px;
@@ -28,53 +25,6 @@ nav.menu ul li a{
     font-size: 16px;
     font-weight: bold;
 }
-
-
-/*
-#menu{
-    float: right;
-    max-width: 500px;
-    display: inline-block;
-    height: 100vh;
-    position: fixed;
-    top: 0;
-    right: 0;
-    z-index: 2;
-}
-#menu-icon{
-    float: left;
-    width: 16px;
-    background: gray;
-    padding: 10px 10px;
-    cursor: pointer;
-    margin: 20px;
-}
-.menu-list{
-    display: inline-block;
-    float: right;
-    background-color:#26262e;
-    height: 100%;
-}
-.menu-list > ul li a{
-    color: #b5b0b0;
-    display: block;
-    text-transform: uppercase;
-    padding: 20px 100px 20px 10px;
-    transition: 0.5s all;
-    font-size: 14px;
-    letter-spacing: 1px;
-}
-.menu-list > ul li a:hover{
-    color:white;
-}
-.menu-list > span {
-    color: #efefef;
-    font-weight: normal;
-    font-size: 18px;
-    display: inline-block;
-    text-transform: uppercase;
-    padding: 30px 10px 30px
-}*/
 .activeLink{
     color: #5bb5d3!important;
 }
@@ -138,26 +88,14 @@ nav.menu ul li a{
     color: #877575;
 }
 .modalButton{
-    margin: 0px;
-    margin-bottom: 5px;
-    text-transform: uppercase;
-    padding: 10px 0px;
-    background: none;
+    margin: 20px 10px!important;
     cursor: pointer;
-    -webkit-transition-duration: 0.5s;
-    -moz-transition-duration: 0.5s;
-    -ms-transition-duration: 0.5s;
-    -o-transition-duration: 0.5s;
-    transition-duration: 0.5s;
+    background: none;
+    border: none;
+    outline: none;
 }
 .modalButton:hover{
-    color: #777;
-}
-.icon:first-child{
-    margin-left: 10px;
-}
-.icon{
-    margin-right: 10px;
+    color: #808082!important;
 }
 /*Classes for creating dialogs*/
 #createDialog{
@@ -186,13 +124,8 @@ nav.menu ul li a{
 }
 
 .modalDialog form input{
-    display: block;
-    max-width: 96%;
-    width: 100%;
-    padding: 10px 5px;
-    margin-bottom: 20px;
-    border: 1px solid #DDD;
-    color: #777;
+    max-width: 94%;
+    margin-left: 10px;
 }
 
 .modalDialog:target {
@@ -203,36 +136,35 @@ nav.menu ul li a{
 .modalDialog > div {
     position: relative;
     margin: 10% auto;
-    padding: 10px 30px 10px 20px;;
     background: white;
-    border-radius: 5px;
+    max-width: 400px;
+    width: 100%;
 }
 
 .close {
-    background: #606061;
-    color: #FFFFFF;
+    color: #777777;
     line-height: 25px;
     position: absolute;
     right: 0px;
     text-align: center;
-    top: 0px;
+    top: 6px;
     width: 24px;
     text-decoration: none;
     font-weight: bold;
-    -moz-border-radius: 12px;
-    -moz-box-shadow: 1px 1px 3px #000;
-    -webkit-box-shadow: 1px 1px 3px #000;
-    box-shadow: 1px 1px 3px #000;
+    font-size: 12px;
+    transition: 0.5s all;
 }
 
-.close:hover { background: #333333; }
+.close:hover {
+    color: #333333;
+}
 
 .dialogTitle{
-    text-align: center;
-    text-transform: uppercase;
-    font-size: 20px;
-    margin: 10px 0px 20px 0px;
-    font-weight: 500;
+    display: block;
+    padding: 10px 0px 20px 10px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #777777;
 }
 
 .menu {
@@ -244,17 +176,6 @@ nav.menu ul li a{
 }
 .green{
     color: #54b757;
-}
-.middleHeightLink{
-    font-weight: 500;
-    text-transform: uppercase;
-    font-size: 13px;
-    position: relative;
-    top: 2px;
-}
-.createDialogLink{
-    display: block;
-    margin-bottom: 20px;
 }
 
 /*HEADER*/
@@ -508,14 +429,12 @@ html {
 
 
 .sidebarTitle{
-    background: #5bb5d3;
-    padding: 10px 0px;
     font-size: 16px;
-    color: white;
-    padding-left: 5px;
-    text-transform: uppercase;
+    color: #777777;
     cursor: default;
     font-weight: bold;
+    margin-top: 0px;
+    margin-bottom: 10px;
 }
 .sidebarLink{
 
@@ -524,35 +443,18 @@ html {
     width: 100%;
     transition: 0.5s all;
     display: block;
-    text-transform: uppercase;
     font-weight: normal;
     padding: 15px 0px;
-    padding-left: 5px;
+    word-wrap: break-word;
+    color:#877575;
 }
 .sidebarLink a:hover{
-    background: #EEEEEE;
+    background: #efefef;
 }
 .activeSidebarLink{
-    background: #EEEEEE!important;
+    background: #efefef!important;
 }
 
-.actionLink{
-    padding: 10px 0px;
-    text-transform: uppercase;
-    color: #5bb5d3;
-    margin: 10px 0px;
-    display: block;
-    font-size: 15px;
-    transition: 0.5s all;
-}
-.pageSubtitle{
-    color: #afabab;
-    font-size: 20px;
-    margin: 10px 0px;
-    text-transform: uppercase;
-    margin-top: 0px;
-    margin-bottom: 10px;
-}
 .pageTitle{
     color: #5bb5d3;
     font-size: 36px;
@@ -567,9 +469,54 @@ html {
     color: #777777;
 }
 .noItems{
-    background-image: url(../img/noItems.png);
+    background-image: url(../img/noItemsHeart.png);
     width: 100%;
     height: 400px;
     background-repeat: no-repeat;
     background-position: top;
+}
+.noItemsParagraph{
+    text-align: center;
+    color: grey;
+    text-transform: uppercase;
+    font-size: 20px;
+}
+.materialInput{
+    border-bottom: 1px solid #e1e1e1;
+    width: 100%;
+    padding: 15px 0px;
+    color: #b7b3b3;
+    font-weight: normal;
+    margin-bottom: 15px;
+    font-size: 14px;
+    transition: 0.5s all;
+}
+input.materialInput::placeholder, input.field::placeholder {
+    color: #b7b3b3;
+    font-size: 14px;
+}
+input.materialInput:focus {
+    border-bottom: 1px solid #b5b5b5;
+    color: gray;
+}
+.noResults{
+    color: #777;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+.icon{
+    position:relative;
+    bottom: 2px;
+}
+.linkWithIcon{
+    display: inline-block;
+    margin: 20px 0px;
+    margin-right: 50px;
+    color: #b3afaf;
+    font-weight: bold;
+    transition: 0.5s all;
+    font-size: 14px;
+}
+a.linkWithIcon:hover {
+    color: #808082!important;
 }

@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
-import MDCreate from "react-icons/lib/fa/plus";
+import MDCreateItem from "react-icons/lib/go/gift";
 import IkeaProductParser from "../scripts/parser/IkeaProductParser";
 import TehnomanijaProductParser from "../scripts/parser/TehnomanijaProductParser";
 import WinWinProductParser from "../scripts/parser/WinWinProductParser";
@@ -74,40 +74,38 @@ export class CreateItemDialog extends React.Component {
     render() {
         return (
             <div>
-                <a href="#createItemDialog" className={"createDialogLink"}>
-                   <span className={"actionLink"}>Create item</span>
+                <a href="#createItemDialog" className={"linkWithIcon"}>
+                    <MDCreateItem fill={"#808082"} size={20} className={"icon"}/> Make a wish
                 </a>
 
                 <div id="createItemDialog" className="modalDialog">
                     <div className={"modalContainer"}>
                         <a href="#" title="Close" className="close" onClick={this.closeModal}>X</a>
 
-                        <p className="dialogTitle blue">Create new item</p>
+                        <p className="dialogTitle blue">Make a wish</p>
 
                         <form>
 
-                            <p className={"wishlistItemSmallRow"}>Link</p>
-
                             <input type="text"
-                                   placeholder={"link"}
-                                   className={"field"}
+                                   placeholder={"Enter link"}
+                                   className={"materialInput"}
                                    name={"link"}
                                    ref={(ref) => this.link = ref}
                                    value={this.state.link}
                                    onChange={this.onChange}
                                    onInput={this.getItemContent} />
 
-                            <p className={"wishlistItemSmallRow"}>Note</p>
-
                             <input type="text"
-                                   placeholder={"note"}
-                                   className={"field"}
+                                   placeholder={"Enter note"}
+                                   className={"materialInput"}
                                    name={"note"}
                                    ref={(ref) => this.note = ref}
                                    value={this.state.note}
                                    onChange={this.onChange} />
 
-                            <button onClick={this.handleSubmit} className="blueButton modalButton blue">Create</button>
+                            <button onClick={this.handleSubmit} className={"linkWithIcon modalButton"}>
+                                <MDCreateItem fill={"#808082"} size={20} className={"icon"}/> Wish
+                            </button>
                         </form>
 
                         {(this.state.name!="" && this.state.price!="" && this.state.currency!="" ) &&

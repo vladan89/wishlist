@@ -3,6 +3,7 @@ const wishlistReducer = (state = {
     wishlist: {name:""},
     error: null,
     removed: false,
+    search:""
 }, action) => {
     switch (action.type){
         case "GET_WISHLISTS_BY_USER_ID":
@@ -42,6 +43,9 @@ const wishlistReducer = (state = {
             break;
         case "GET_WISHLIST_BY_ID_REJECTED":
             state = {...state, error: action.payload};
+            break;
+        case "SEARCH":
+            state = { ...state, search: action.payload}
             break;
     }
     return state;

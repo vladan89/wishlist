@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
-import MDCreate from "react-icons/lib/fa/plus";
+import MDCreateWishlist from "react-icons/lib/md/playlist-add";
 
 export class CreateWishlistDialog extends React.Component {
 
@@ -26,24 +26,25 @@ export class CreateWishlistDialog extends React.Component {
     render() {
         var inputs = this.props.attributes.map(attribute =>
             <p key={attribute}>
-                <input type="text" placeholder={attribute} ref={attribute} className="field" />
+                <input type="text" placeholder={"Enter "+attribute} ref={attribute} className="materialInput" />
             </p>
         );
         return (
             <div>
-                <a href="#createDialog" className={"createDialogLink"}>
-                    <span className={"actionLink"}>Create {this.props.purpose}</span>
+                <a href="#createWishlistDialog" className={"linkWithIcon"}>
+                    <MDCreateWishlist fill={"#808082"} size={25} className={"icon"}/> Create wishlist
                 </a>
-
-                <div id="createDialog" className="modalDialog">
-                    <div className={"smallForm"}>
+                <div id="createWishlistDialog" className="modalDialog">
+                    <div>
                         <a href="#" title="Close" className="close">X</a>
 
                         <p className="dialogTitle blue">Create new {this.props.purpose}</p>
 
                         <form>
                             {inputs}
-                            <button onClick={this.handleSubmit} className="blueButton modalButton blue">Create</button>
+                            <button onClick={this.handleSubmit} className={"linkWithIcon modalButton"}>
+                                <MDCreateWishlist fill={"#808082"} size={25} className={"icon"}/> Create
+                            </button>
                         </form>
                     </div>
                 </div>

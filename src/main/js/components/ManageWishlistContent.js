@@ -1,5 +1,7 @@
 import React from "react";
 import {NavLink} from "react-router-dom";
+import MDEdit from "react-icons/lib/md/settings";
+import MDRemove from "react-icons/lib/md/delete";
 
 export class ManageWishlistContent extends React.Component{
     constructor(props){
@@ -23,9 +25,12 @@ export class ManageWishlistContent extends React.Component{
     render(){
         return(
             <div>
-                <p className="pageSubtitle">Showing details for</p>
                 <p className={"pageTitle"}> {this.props.wishlist.wishlist.name} </p>
-                <NavLink className={"actionLink"} to={"/"} onClick={(id)=>this.onWishlistRemove(this.props.id)}>Remove</NavLink>
+
+                <div className="actions">
+                    <a href={"#"} className={"linkWithIcon"}><MDEdit fill={"#808082"} size={20} className={"icon"}/> Edit this wishlist </a>
+                    <NavLink className={"linkWithIcon"} to={"/"} onClick={(id)=>this.onWishlistRemove(this.props.id)}><MDRemove fill={"#808082"} size={20} className={"icon"}/> Remove this wishlist</NavLink>
+                </div>
             </div>
         );
     }

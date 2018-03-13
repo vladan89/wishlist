@@ -23,7 +23,9 @@ export default class WishlistDetails extends React.Component{
 
             <Sidebar wishlist={this.props.wishlist}
                      createWishlist = {this.props.createWishlist}
-                     getLoggedUserId = {this.props.getLoggedUserId}/>
+                     getLoggedUserId = {this.props.getLoggedUserId}
+                     wishlistSearch={this.props.wishlistSearch}
+                     updateWishlistSearch = {this.props.updateWishlistSearch}/>
 
                 <div className="mainContent">
 

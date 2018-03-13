@@ -7,7 +7,7 @@ export const Header = (props) => (
         <header>
             <div className="headerLeft">
                 <div className="logo">
-                    <NavLink exact to="/">ListaŽelja</NavLink>
+                    <NavLink exact to="/">WISHLIST</NavLink>
                 </div>
             </div>
             <div className="headerRight">
@@ -22,9 +22,6 @@ export const Header = (props) => (
                         }
                     </ul>
                 </nav>
-
-                {/* <Menu /> */}
-
             </div>
             <div className="clear"></div>
         </header>

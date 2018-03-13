@@ -31,3 +31,11 @@ export function removeWishlist(id) {
         payload: request
     }
 }
+
+
+export function updateWishlistSearch(e){
+    return {
+        type: "SEARCH",
+        payload: e.target.value
+    }
+}
