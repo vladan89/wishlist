@@ -40,18 +40,26 @@ nav.menu ul li a{
     display: inline-grid;
 }
 .wishlistItemName{
-    color: #4c4b49!important;
+    color: #777777!important;
     font-weight: 500;
     font-size: 14px;
 }
 .wishlistItemPrice{
     font-size: 14px;
-    color: #4c4b49;
+    color: #777777;
 }
 .wishlistItemNote{
     text-align: justify!important;
-    color: #4c4b49;
+    color: #777777;
     font-size: 14px;
+}
+.wishlistItemLink{
+    text-align: justify!important;
+    color: #777777;
+    font-size: 14px;
+}
+.wishlistItemLink a{
+    color: #5bb5d3;
 }
 .wishlistItemPhoto img{
     max-width: 100%;
@@ -87,15 +95,18 @@ nav.menu ul li a{
 .gray{
     color: #877575;
 }
-.modalButton{
+.modalButton, .noBackgroundBtn{
     margin: 20px 10px!important;
     cursor: pointer;
     background: none;
     border: none;
     outline: none;
 }
-.modalButton:hover{
+.modalButton:hover, .noBackgroundBtn:hover{
     color: #808082!important;
+}
+.noBackgroundBtn{
+    margin-left: 0px!important;
 }
 /*Classes for creating dialogs*/
 #createDialog{

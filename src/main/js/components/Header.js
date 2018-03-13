@@ -1,13 +1,11 @@
 import React from "react";
-import {Menu} from "./Menu";
-import {NavLink} from "react-router-dom";
 
 export const Header = (props) => (
     <div className={"header"}>
         <header>
             <div className="headerLeft">
                 <div className="logo">
-                    <NavLink exact to="/">WISHLIST</NavLink>
+                    <a href="/">WISHLIST</a>
                 </div>
             </div>
             <div className="headerRight">

@@ -15,4 +15,35 @@
         margin:10px 0px;
         text-align: center!important;
     }
+    .pageTitle{
+        font-size: 28px;
+    }
+    .linkWithIcon{
+        margin-right: 20px;
+    }
+
+}
+@media screen and (max-width: 710px) {
+    .container{
+        display: grid;
+    }
+    .sidebar, .scrollable{
+        max-width: 100%;
+    }
+    .sidebar{
+        max-width: 98% !important;
+    }
+}
+@media screen and (max-width: 900px) {
+    .itemsHolder{
+        display: grid;
+        justify-content: center;
+    }
+    .wishlistItem{
+        max-width: 100%;
+        margin: 0px;
+    }
+    .mainContent{
+        max-width: 98%;
+    }
 }

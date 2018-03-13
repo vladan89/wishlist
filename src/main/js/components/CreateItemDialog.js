@@ -2,6 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 
 import MDCreateItem from "react-icons/lib/go/gift";
+import ProductParser from "../scripts/parser/ProductParser";
 import IkeaProductParser from "../scripts/parser/IkeaProductParser";
 import TehnomanijaProductParser from "../scripts/parser/TehnomanijaProductParser";
 import WinWinProductParser from "../scripts/parser/WinWinProductParser";
@@ -59,7 +60,7 @@ export class CreateItemDialog extends React.Component {
                 link: obj.link,
                 photo: obj.photo
             });
-        }, 2500);
+        }, 5000);
 
 
     }

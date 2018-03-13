@@ -18,15 +18,14 @@ export default class ProductParser{
         $.ajax({
             method: 'GET',
             url : '/connection/get?url=' + url,
-            contentType: 'text/plain',
-            success: (result) => {
-                self.page = result;
-                self.fillData();
-            },
-            error : function (errors) {
-                console.log(errors);
-            }
+            contentType: 'text/plain'
+        }).done((result)=>{
+            self.page = result;
+            self.fillData();
+        }).fail((err)=>{
+            console.log(err);
         });
+
     }
 
     fillData(){

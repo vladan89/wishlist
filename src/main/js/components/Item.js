@@ -1,7 +1,5 @@
 import React from "react";
-
-import MDDelete from "react-icons/lib/fa/close";
-import MDCheck from "react-icons/lib/fa/check";
+import MDRemove from "react-icons/lib/md/delete";
 
 export class Item extends React.Component{
 
@@ -26,13 +24,13 @@ export class Item extends React.Component{
                 <p className={"wishlistItemName"}>{item.name}</p>
                 <p className={"wishlistItemSmallRow"}>Price</p>
                 <p className={"wishlistItemPrice"}>{item.price} {item.currency.toUpperCase()}</p>
-
-                    {item.note!="" && <p className={"wishlistItemSmallRow"}>Note</p>}
-                    {item.note!="" && <p className={"wishlistItemNote"}>{item.note}</p>}
-
-                <p className={"wishlistItemSmallRow"}>Actions</p>
-                <button type="button" className="button greenButton " onClick={this.handleRemove}><MDCheck size={15} fill={"#ffffff"}/></button>
-                <button type="button" className="button redButton " onClick={this.handleRemove}><MDDelete size={15} fill={"#ffffff"}/></button>
+                {item.note!="" && <p className={"wishlistItemSmallRow"}>Note</p>}
+                {item.note!="" && <p className={"wishlistItemNote"}>{item.note}</p>}
+                <p className={"wishlistItemSmallRow"}>Link</p>
+                <p className={"wishlistItemLink"}><a href={item.link} target={"_blank"}>{item.link}</a></p>
+                <button onClick={this.handleRemove} className={"linkWithIcon noBackgroundBtn"}>
+                    <MDRemove fill={"#808082"} size={20} className={"icon"}/> Remove from wishlist
+                </button>
                 </div>
             </div>
         );
