@@ -29,7 +29,7 @@ export class ManageWishlistContent extends React.Component{
 
                 <div className="actions">
                     <a href={"#"} className={"linkWithIcon"}><MDEdit fill={"#808082"} size={20} className={"icon"}/> Edit wishlist </a>
-                    <NavLink className={"linkWithIcon"} to={"/"} onClick={(id)=>this.onWishlistRemove(this.props.id)}><MDRemove fill={"#808082"} size={20} className={"icon"}/> Remove wishlist</NavLink>
+                    <NavLink className={"linkWithIcon"} to={"/"} onClick={()=>{if(confirm("Are you sure you want to remove this wishlist?")) this.onWishlistRemove(this.props.id) }}><MDRemove fill={"#808082"} size={20} className={"icon"}/> Remove wishlist</NavLink>
                 </div>
             </div>
         );

@@ -61,9 +61,11 @@ nav.menu ul li a{
 .wishlistItemLink a{
     color: #5bb5d3;
 }
-.wishlistItemPhoto img{
-    max-width: 100%;
-    width: 100%;
+.wishlistItemPhoto{
+    height: 300px;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    background-size: contain;
 }
 .wishlistItemSmallRow{
     color: #b7b2b2;
@@ -146,7 +148,7 @@ nav.menu ul li a{
 
 .modalDialog > div {
     position: relative;
-    margin: 10% auto;
+    margin: 5% auto;
     background: white;
     max-width: 400px;
     width: 100%;
@@ -314,13 +316,13 @@ footer p{
 }
 #preview{
     max-width: 400px;
-    display: inline-block;
 }
 .previewTop{
     text-align: center;
 }
 .previewTop img{
-    max-width: 60%;
+    max-width: 45%;
+    max-height: 250px;
 }
 .previewBottom{
     float: left;
