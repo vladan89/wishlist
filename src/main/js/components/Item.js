@@ -5,10 +5,15 @@ export class Item extends React.Component{
 
     constructor(props){
         super(props);
+        this.confirmItemDeletion=this.confirmItemDeletion.bind(this);
+    }
+
+    confirmItemDeletion(e){
+        return confirm("Are you sure you want to remove this wish?") ? this.handleRemove() : e.preventDefault();
     }
 
     handleRemove(){
-        this.props.onItemRemove(this.props.item);
+        this.props.onItemRemove();
     }
 
     render(){
@@ -25,7 +30,7 @@ export class Item extends React.Component{
                 {item.note!="" && <p className={"wishlistItemNote"}>{item.note}</p>}
                 <p className={"wishlistItemSmallRow"}>Link</p>
                 <p className={"wishlistItemLink"}><a href={item.link} target={"_blank"}>{item.link}</a></p>
-                <button onClick={()=>{if(confirm("Are you sure you want to remove this wish?")) this.handleRemove()}} className={"linkWithIcon noBackgroundBtn"}>
+                <button onClick={this.confirmItemDeletion} className={"linkWithIcon noBackgroundBtn"}>
                     <MDRemove fill={"#808082"} size={20} className={"icon"}/> Remove from wishlist
                 </button>
                 </div>

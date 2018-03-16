@@ -32,6 +32,13 @@ export function removeWishlist(id) {
     }
 }
 
+export function editWishlist(id, data) {
+    const request = axios.patch(`/api/wishlists/${id}`, data);
+    return {
+        type: "EDIT_WISHLIST",
+        payload: request
+    }
+}
 
 export function updateWishlistSearch(e){
     return {

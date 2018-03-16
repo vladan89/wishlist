@@ -24,6 +24,17 @@ const wishlistReducer = (state = {
         case "CREATE_WISHLIST_REJECTED":
             state = {...state, error: action.payload};
             break;
+        case "EDIT_WISHLIST":
+            state = {...state};
+            break;
+        case "EDIT_WISHLIST_FULFILLED":
+            state = {...state,
+                wishlists: state.wishlists.map(current => current._links.self.href === action.payload.request.responseURL  ? {...current, name: action.payload.data.name} : current ),
+                wishlist:{...state.wishlist, name:action.payload.data.name}
+            };
+            break;
+        case "EDIT_WISHLIST_REJECTED":
+            state = {...state, error: action.payload}
         case "REMOVE_WISHLIST":
             state = {...state};
             break;

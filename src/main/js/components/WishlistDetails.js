@@ -32,6 +32,7 @@ export default class WishlistDetails extends React.Component{
                     <ManageWishlistContent id={this.props.match.params.id}
                                            wishlist = {this.props.wishlist}
                                            getWishlistById = {this.props.getWishlistById}
+                                           editWishlist = {this.props.editWishlist}
                                            removeWishlist={this.props.removeWishlist}/>
 
                     <CreateItemDialog item={this.props.item}
@@ -42,7 +43,6 @@ export default class WishlistDetails extends React.Component{
                                        item = {this.props.item}
                                        removeItem={this.props.removeItem}
                                        getItemsByWishlistId={this.props.getItemsByWishlistId}/>
-
 
             </div>
 

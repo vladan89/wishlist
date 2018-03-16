@@ -533,3 +533,7 @@ input.materialInput:focus {
 a.linkWithIcon:hover {
     color: #808082!important;
 }
+
+.inlineBlock{
+    display:inline-block;
+}

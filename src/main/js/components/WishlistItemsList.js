@@ -23,7 +23,7 @@ export class WishlistItemsList extends React.Component{
     render(){
         var items = this.props.item.items.map((item, index) => <Item key={index}
                                                                      item={item}
-                                                                     onItemRemove={(id)=>this.onItemRemove(item._links.self.href.split("/").pop())} /> );
+                                                                     onItemRemove={()=>this.onItemRemove(item._links.self.href.split("/").pop())} /> );
         return(
             <div className={"itemsHolder"}>
                 {items.length > 0 && items}

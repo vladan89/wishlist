@@ -1,6 +1,4 @@
 import React from "react";
-import ReactDOM from "react-dom";
-
 import MDCreateItem from "react-icons/lib/go/gift";
 import ProductParser from "../scripts/parser/ProductParser";
 import IkeaProductParser from "../scripts/parser/IkeaProductParser";
@@ -68,8 +66,8 @@ export class CreateItemDialog extends React.Component {
     handleSubmit(e) {
         e.preventDefault();
         this.props.onItemCreate(this.state);
-        window.location = "#";
         this.setState({ name:"", price:"", currency:"", note:"", link:"", photo:"" });
+        window.location = "#";
     }
 
     render() {
@@ -85,13 +83,13 @@ export class CreateItemDialog extends React.Component {
 
                         <p className="dialogTitle blue">Make a wish</p>
 
-                        <form>
+                        <form onSubmit={this.handleSubmit}>
 
                             <input type="text"
                                    placeholder={"Enter link"}
                                    className={"materialInput"}
                                    name={"link"}
-                                   ref={(ref) => this.link = ref}
+                                   ref={(link) => this.link = link}
                                    value={this.state.link}
                                    onChange={this.onChange}
                                    onInput={this.getItemContent} />
@@ -100,16 +98,16 @@ export class CreateItemDialog extends React.Component {
                                    placeholder={"Enter note"}
                                    className={"materialInput"}
                                    name={"note"}
-                                   ref={(ref) => this.note = ref}
+                                   ref={(note) => this.note = note}
                                    value={this.state.note}
                                    onChange={this.onChange} />
 
-                            <button onClick={this.handleSubmit} className={"linkWithIcon modalButton"}>
+                            <button className={"linkWithIcon modalButton"}>
                                 <MDCreateItem fill={"#808082"} size={20} className={"icon"}/> Wish
                             </button>
                         </form>
 
-                        {(this.state.name!="" && this.state.price!="" && this.state.currency!="" ) &&
+                        {(this.state.name!="" && this.state.price!="" && this.state.currency!=""  && this.state.photo!=""  ) &&
                             <div id="preview" >
                                 <div className="previewTop">
                                     <img src={this.state.photo} alt="Preview image"/>

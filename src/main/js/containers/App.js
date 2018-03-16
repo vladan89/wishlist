@@ -16,7 +16,7 @@ import {Footer} from "../components/Footer";
 
 import {getLoggedUserId} from "../actions/securityActions";
 import {
-    createWishlist, getWishlistById, getWishlistsByUserId, removeWishlist,
+    createWishlist, editWishlist, getWishlistById, getWishlistsByUserId, removeWishlist,
     updateWishlistSearch
 } from "../actions/wishlistActions";
 import {createItem, getItemsByWishlistId, removeItem} from "../actions/itemActions";
@@ -50,6 +50,7 @@ class App extends React.Component {
                                     getLoggedUserId = {this.props.getLoggedUserId}
                                     createWishlist = {this.props.createWishlist}
                                     removeWishlist = {this.props.removeWishlist}
+                                    editWishlist = {this.props.editWishlist}
                                     item = {this.props.item}
                                     getItemsByWishlistId = {this.props.getItemsByWishlistId}
                                     createItem = {this.props.createItem}
@@ -92,6 +93,9 @@ const mapDispatchToProps = (dispatch) => {
         },
         removeWishlist:(id)=>{
             dispatch(removeWishlist(id));
+        },
+        editWishlist:(id,data)=>{
+            dispatch(editWishlist(id,data));
         },
         getItemsByWishlistId:(id)=>{
             dispatch(getItemsByWishlistId(id));

@@ -1,5 +1,4 @@
 import React from "react";
-import ReactDOM from "react-dom";
 
 import MDCreateWishlist from "react-icons/lib/md/playlist-add";
 
@@ -13,22 +12,15 @@ export class CreateWishlistDialog extends React.Component {
     handleSubmit(e) {
         e.preventDefault();
         var newWishlist = {};
-        this.props.attributes.forEach(attribute => {
-            newWishlist[attribute] = ReactDOM.findDOMNode(this.refs[attribute]).value.trim();
-        });
-        this.props.onWishlistCreate(newWishlist);
-        this.props.attributes.forEach(attribute => {
-            ReactDOM.findDOMNode(this.refs[attribute]).value = ''; // clear out the dialog's inputs
-        });
-        window.location = "#";
+        newWishlist["name"] = this.name.value.trim();
+        if(newWishlist.name!=""){
+            this.props.onWishlistCreate(newWishlist);
+            this.name.value="";
+            window.location="#";
+        } else alert("Wishlist name can not be blank!");
     }
 
     render() {
-        var inputs = this.props.attributes.map(attribute =>
-            <p key={attribute}>
-                <input type="text" placeholder={"Enter "+attribute} ref={attribute} className="materialInput" />
-            </p>
-        );
         return (
             <div>
                 <a href="#createWishlistDialog" className={"linkWithIcon"}>
@@ -40,9 +32,9 @@ export class CreateWishlistDialog extends React.Component {
 
                         <p className="dialogTitle blue">Create new {this.props.purpose}</p>
 
-                        <form>
-                            {inputs}
-                            <button onClick={this.handleSubmit} className={"linkWithIcon modalButton"}>
+                        <form onSubmit={this.handleSubmit}>
+                            <input type="text" placeholder="Enter wishlist name" ref={ (name) => this.name = name} className="materialInput" />
+                            <button type={"submit"} className={"linkWithIcon modalButton"}>
                                 <MDCreateWishlist fill={"#808082"} size={25} className={"icon"}/> Create
                             </button>
                         </form>
